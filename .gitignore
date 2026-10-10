@@ -1,0 +1,15 @@
+_explore/
+.playwright-mcp/
+node_modules
+dist
+*.local
+*.log
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+
+# licensed fonts (Aktiv Grotesk — local study use only)
+public/fonts/Aktiv*
+# third-party photo originals + generated images (Divisare, study only)
+assets-src/
+public/img/

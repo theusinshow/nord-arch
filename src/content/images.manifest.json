@@ -1,0 +1,1705 @@
+{
+ "projects": {
+  "marram-house": {
+   "opening": {
+    "src": "/img/marram-house/opening",
+    "w": 3000,
+    "h": 2000,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/marram-house/card",
+    "w": 800,
+    "h": 533,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     800
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/marram-house/g01",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/marram-house/g02",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/marram-house/g03",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/marram-house/g04",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/marram-house/g05",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/marram-house/g06",
+     "w": 2997,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/marram-house/g07",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/marram-house/g08",
+     "w": 1333,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1333
+     ]
+    },
+    {
+     "src": "/img/marram-house/g09",
+     "w": 1333,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1333
+     ]
+    }
+   ]
+  },
+  "casa-pedra-furada": {
+   "opening": {
+    "src": "/img/casa-pedra-furada/opening",
+    "w": 800,
+    "h": 399,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     800
+    ]
+   },
+   "card": {
+    "src": "/img/casa-pedra-furada/card",
+    "w": 2234,
+    "h": 2000,
+    "ratio": "16:9",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/casa-pedra-furada/g01",
+     "w": 2800,
+     "h": 1386,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g02",
+     "w": 2800,
+     "h": 1494,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g03",
+     "w": 800,
+     "h": 582,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g04",
+     "w": 800,
+     "h": 400,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g05",
+     "w": 2453,
+     "h": 2000,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g06",
+     "w": 2799,
+     "h": 1530,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g07",
+     "w": 1469,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1440,
+      1469
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g08",
+     "w": 2209,
+     "h": 2000,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-pedra-furada/g09",
+     "w": 1856,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1440,
+      1856
+     ]
+    }
+   ]
+  },
+  "pleat-house": {
+   "opening": {
+    "src": "/img/pleat-house/opening",
+    "w": 2800,
+    "h": 1476,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/pleat-house/card",
+    "w": 2800,
+    "h": 1595,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/pleat-house/g01",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g02",
+     "w": 800,
+     "h": 792,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g03",
+     "w": 800,
+     "h": 1188,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g04",
+     "w": 800,
+     "h": 1059,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g05",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g06",
+     "w": 800,
+     "h": 598,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g07",
+     "w": 800,
+     "h": 694,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g08",
+     "w": 800,
+     "h": 647,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/pleat-house/g09",
+     "w": 800,
+     "h": 489,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    }
+   ]
+  },
+  "casa-campo-dos-padres": {
+   "opening": {
+    "src": "/img/casa-campo-dos-padres/opening",
+    "w": 2800,
+    "h": 1694,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/casa-campo-dos-padres/card",
+    "w": 2800,
+    "h": 1868,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/casa-campo-dos-padres/g01",
+     "w": 800,
+     "h": 639,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g02",
+     "w": 800,
+     "h": 830,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g03",
+     "w": 800,
+     "h": 880,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g04",
+     "w": 800,
+     "h": 815,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g05",
+     "w": 800,
+     "h": 1199,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g06",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g07",
+     "w": 800,
+     "h": 1265,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g08",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-campo-dos-padres/g09",
+     "w": 800,
+     "h": 418,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    }
+   ]
+  },
+  "five-gables": {
+   "opening": {
+    "src": "/img/five-gables/opening",
+    "w": 3000,
+    "h": 2000,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/five-gables/card",
+    "w": 3000,
+    "h": 2000,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/five-gables/g01",
+     "w": 800,
+     "h": 885,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/five-gables/g02",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/five-gables/g03",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/five-gables/g04",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/five-gables/g05",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/five-gables/g06",
+     "w": 800,
+     "h": 800,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/five-gables/g07",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/five-gables/g08",
+     "w": 1331,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1331
+     ]
+    },
+    {
+     "src": "/img/five-gables/g09",
+     "w": 1333,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1333
+     ]
+    },
+    {
+     "src": "/img/five-gables/g10",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    }
+   ]
+  },
+  "firn-house": {
+   "opening": {
+    "src": "/img/firn-house/opening",
+    "w": 3000,
+    "h": 2000,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/firn-house/card",
+    "w": 1333,
+    "h": 2000,
+    "ratio": "4:5",
+    "widths": [
+     640,
+     960,
+     1333
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/firn-house/g01",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/firn-house/g02",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/firn-house/g03",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/firn-house/g04",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/firn-house/g05",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/firn-house/g06",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/firn-house/g07",
+     "w": 1333,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1333
+     ]
+    },
+    {
+     "src": "/img/firn-house/g08",
+     "w": 800,
+     "h": 1200,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    }
+   ]
+  },
+  "casa-treze-tilias": {
+   "opening": {
+    "src": "/img/casa-treze-tilias/opening",
+    "w": 800,
+    "h": 630,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     800
+    ]
+   },
+   "card": {
+    "src": "/img/casa-treze-tilias/card",
+    "w": 800,
+    "h": 630,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     800
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/casa-treze-tilias/g01",
+     "w": 2535,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g02",
+     "w": 3000,
+     "h": 1888,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g03",
+     "w": 800,
+     "h": 630,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g04",
+     "w": 800,
+     "h": 630,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g05",
+     "w": 800,
+     "h": 503,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g06",
+     "w": 800,
+     "h": 630,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g07",
+     "w": 2535,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g08",
+     "w": 2535,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g09",
+     "w": 2535,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/casa-treze-tilias/g10",
+     "w": 1577,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1440,
+      1577
+     ]
+    }
+   ]
+  },
+  "casas-ferrugem": {
+   "opening": {
+    "src": "/img/casas-ferrugem/opening",
+    "w": 1860,
+    "h": 1240,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1860
+    ]
+   },
+   "card": {
+    "src": "/img/casas-ferrugem/card",
+    "w": 800,
+    "h": 533,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     800
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/casas-ferrugem/g01",
+     "w": 1860,
+     "h": 1240,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1860
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g02",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g03",
+     "w": 1240,
+     "h": 1860,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1240
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g04",
+     "w": 1860,
+     "h": 1240,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1860
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g05",
+     "w": 1240,
+     "h": 1860,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1240
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g06",
+     "w": 1860,
+     "h": 1520,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      960,
+      1440,
+      1860
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g07",
+     "w": 1240,
+     "h": 1860,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1240
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g08",
+     "w": 1860,
+     "h": 1240,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1860
+     ]
+    },
+    {
+     "src": "/img/casas-ferrugem/g09",
+     "w": 1860,
+     "h": 1240,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1860
+     ]
+    }
+   ]
+  },
+  "steppe-house": {
+   "opening": {
+    "src": "/img/steppe-house/opening",
+    "w": 3000,
+    "h": 2000,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/steppe-house/card",
+    "w": 3000,
+    "h": 2000,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/steppe-house/g01",
+     "w": 800,
+     "h": 1199,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/steppe-house/g02",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/steppe-house/g03",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/steppe-house/g04",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/steppe-house/g05",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/steppe-house/g06",
+     "w": 3000,
+     "h": 2000,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/steppe-house/g07",
+     "w": 800,
+     "h": 533,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    }
+   ]
+  },
+  "celeiro-testo-alto": {
+   "opening": {
+    "src": "/img/celeiro-testo-alto/opening",
+    "w": 2500,
+    "h": 1964,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2500
+    ]
+   },
+   "card": {
+    "src": "/img/celeiro-testo-alto/card",
+    "w": 2500,
+    "h": 1964,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/celeiro-testo-alto/g01",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/celeiro-testo-alto/g02",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/celeiro-testo-alto/g03",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/celeiro-testo-alto/g04",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/celeiro-testo-alto/g05",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/celeiro-testo-alto/g06",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/celeiro-testo-alto/g07",
+     "w": 2500,
+     "h": 1964,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    }
+   ]
+  },
+  "mound-pavilion": {
+   "opening": {
+    "src": "/img/mound-pavilion/opening",
+    "w": 3000,
+    "h": 1957,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2560
+    ]
+   },
+   "card": {
+    "src": "/img/mound-pavilion/card",
+    "w": 3000,
+    "h": 1957,
+    "ratio": "3:2",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/mound-pavilion/g01",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g02",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g03",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g04",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g05",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g06",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g07",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g08",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g09",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/mound-pavilion/g10",
+     "w": 800,
+     "h": 521,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    }
+   ]
+  },
+  "atelie-saco-dos-limoes": {
+   "opening": {
+    "src": "/img/atelie-saco-dos-limoes/opening",
+    "w": 2000,
+    "h": 1886,
+    "ratio": "16:9",
+    "widths": [
+     640,
+     960,
+     1440,
+     1920,
+     2000
+    ]
+   },
+   "card": {
+    "src": "/img/atelie-saco-dos-limoes/card",
+    "w": 800,
+    "h": 655,
+    "ratio": "16:9",
+    "widths": [
+     640,
+     800
+    ]
+   },
+   "gallery": [
+    {
+     "src": "/img/atelie-saco-dos-limoes/g01",
+     "w": 800,
+     "h": 640,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g02",
+     "w": 800,
+     "h": 640,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g03",
+     "w": 800,
+     "h": 613,
+     "ratio": "3:2",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g04",
+     "w": 800,
+     "h": 723,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      800
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g05",
+     "w": 2000,
+     "h": 1881,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g06",
+     "w": 1429,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1429
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g07",
+     "w": 2000,
+     "h": 1913,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g08",
+     "w": 1428,
+     "h": 1999,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1428
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g09",
+     "w": 2000,
+     "h": 1665,
+     "ratio": "16:9",
+     "widths": [
+      640,
+      960,
+      1440,
+      1920
+     ]
+    },
+    {
+     "src": "/img/atelie-saco-dos-limoes/g10",
+     "w": 1429,
+     "h": 2000,
+     "ratio": "4:5",
+     "widths": [
+      640,
+      960,
+      1429
+     ]
+    }
+   ]
+  }
+ },
+ "drift": [
+  {
+   "src": "/img/drift/d01",
+   "w": 2998,
+   "h": 2000,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d02",
+   "w": 3000,
+   "h": 1875,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d03",
+   "w": 2500,
+   "h": 2000,
+   "ratio": "16:9",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d04",
+   "w": 800,
+   "h": 533,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d05",
+   "w": 1440,
+   "h": 1035,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d06",
+   "w": 2880,
+   "h": 1920,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d07",
+   "w": 2500,
+   "h": 2000,
+   "ratio": "16:9",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d08",
+   "w": 2500,
+   "h": 2000,
+   "ratio": "16:9",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d09",
+   "w": 3000,
+   "h": 2000,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d10",
+   "w": 2234,
+   "h": 2000,
+   "ratio": "16:9",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d11",
+   "w": 800,
+   "h": 598,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d12",
+   "w": 800,
+   "h": 533,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d13",
+   "w": 800,
+   "h": 800,
+   "ratio": "16:9",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d14",
+   "w": 800,
+   "h": 630,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d15",
+   "w": 1860,
+   "h": 1240,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d16",
+   "w": 3000,
+   "h": 1957,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d17",
+   "w": 3000,
+   "h": 2000,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  },
+  {
+   "src": "/img/drift/d18",
+   "w": 2500,
+   "h": 1964,
+   "ratio": "3:2",
+   "widths": [
+    480,
+    720
+   ]
+  }
+ ],
+ "hero": {
+  "photo": {
+   "src": "/img/hero/photo",
+   "w": 3000,
+   "h": 2880,
+   "ratio": "16:9",
+   "widths": [
+    640,
+    960,
+    1280,
+    1920,
+    2560
+   ]
+  },
+  "fg": {
+   "src": "/img/hero/fg",
+   "w": 3000,
+   "h": 2880,
+   "ratio": "16:9",
+   "widths": [
+    640,
+    960,
+    1280,
+    1920,
+    2560
+   ]
+  },
+  "roofLine": 0.399,
+  "luma": 0.0905
+ }
+}

@@ -1,0 +1,153 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Michroma";
+  src: url("/fonts/michroma-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Aktiv Grotesk";
+  src: url("/fonts/AktivGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Aktiv Grotesk";
+  src: url("/fonts/AktivGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+/* metric-matched fallback to keep CLS low while Aktiv swaps in */
+@font-face {
+  font-family: "Aktiv Fallback";
+  src: local("Arial");
+  size-adjust: 102%;
+  ascent-override: 92%;
+  descent-override: 24%;
+}
+
+@theme {
+  --color-bg: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-text: #0B0B0C;
+  --color-muted: #6B6E72;
+  --color-border: #E4E6E8;
+  --color-primary: #0B0B0C;
+  --color-primary-fg: #FFFFFF;
+
+  --font-display: "Michroma", "Eurostile", Arial, sans-serif;
+  --font-body: "Aktiv Grotesk", "Aktiv Fallback", "Helvetica Neue", Arial, sans-serif;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+
+  --radius: 0px;
+  --container: 1600px;
+  --gutter: 24px;
+  --margin: clamp(20px, 5vw, 96px);
+  --sec-s: clamp(64px, 8vw, 96px);
+  --sec-m: clamp(96px, 12vw, 160px);
+  --sec-l: clamp(160px, 18vw, 280px);
+
+  --ease-out: cubic-bezier(.2,.7,.1,1);
+  --ease-inout: cubic-bezier(.7,0,.2,1);
+  --ease-spring-back: cubic-bezier(.2,1.4,.3,1);
+  --dur-micro: 200ms;
+  --dur-ui: 600ms;
+  --dur-reveal: 1200ms;
+  --dur-page: 600ms;
+  --dur-hero: 1200ms;
+  --dur-hero-photo: 2400ms;
+  --roof-angle: 33.7deg;
+}
+
+@layer base {
+  html { overflow-x: clip; background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; background: var(--color-bg); }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  ::selection { background: #0B0B0C; color: #FFFFFF; }
+  :focus-visible { outline: 2px solid #0B0B0C; outline-offset: 2px; }
+  .on-photo :focus-visible, .on-photo:focus-visible { outline: none; box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #0B0B0C; }
+}
+
+@layer components {
+  /* type roles — DESIGN_SYSTEM.md → Typography */
+  .t-hero { font-family: var(--font-display); font-size: clamp(56px, 14vw, 224px); line-height: .9; text-transform: uppercase; }
+  .t-hero-label { font-family: var(--font-display); font-size: 11px; line-height: 1.2; letter-spacing: .24em; text-transform: uppercase; }
+  .t-display { font-family: var(--font-display); font-size: clamp(39px, 5.2vw, 76px); line-height: 1.05; letter-spacing: -.01em; max-width: 18ch; }
+  .t-h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 64px); line-height: 1.1; letter-spacing: -.01em; max-width: 20ch; }
+  .t-h2 { font-family: var(--font-display); font-size: clamp(25px, 2.8vw, 39px); line-height: 1.15; max-width: 24ch; }
+  .t-manifesto { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 40px); line-height: 1.3; max-width: 30ch; }
+  .t-h3 { font-family: var(--font-display); font-size: 20px; line-height: 1.25; }
+  .t-nav { font-family: var(--font-display); font-size: 13px; line-height: 1; letter-spacing: .02em; }
+  .t-label { font-family: var(--font-display); font-size: 11px; line-height: 1.3; letter-spacing: .04em; }
+  .t-wordmark { font-family: var(--font-display); font-size: 14px; line-height: 1; letter-spacing: .32em; text-transform: uppercase; }
+  @media (max-width: 639px) { .t-wordmark { font-size: 12px; letter-spacing: .18em; } }
+  .t-body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; max-width: 62ch; }
+  .t-caption { font-family: var(--font-body); font-size: 13px; line-height: 1.4; max-width: 40ch; }
+
+  .wrap { padding-left: var(--margin); padding-right: var(--margin); max-width: calc(var(--container) + 2 * var(--margin)); margin-left: auto; margin-right: auto; }
+  .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  @media (max-width: 1023px) { .grid-12 { grid-template-columns: repeat(8, minmax(0, 1fr)); } }
+  @media (max-width: 639px) { .grid-12 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+  .link { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%; padding-bottom: 2px; transition: background-size var(--dur-micro) var(--ease-out); }
+  .link:hover, .link:focus-visible, .link[aria-current="page"], .link[aria-selected="true"], .link[aria-pressed="true"] { background-size: 100% 1px; }
+
+  /* diagonal reveal at the roof angle; --k set from element aspect (height/width * 1.5) */
+  .reveal { --k: 100%; clip-path: polygon(0 0, calc(2px - var(--k)) 0, 2px 100%, 0 100%); /* 2px sliver keeps lazy-load + IO alive */ transition: clip-path var(--dur-reveal) var(--ease-out); }
+  .reveal.is-in { clip-path: polygon(0 0, 100% 0, calc(100% + var(--k)) 100%, 0 100%); }
+
+  .skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: #0B0B0C; color: #fff; padding: 10px 14px; }
+  .skip:focus { top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-in { clip-path: none !important; transition: none !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
+
+/* ---------- preloader: monogram drawn stroke by stroke, then a 33.7° diagonal exit ---------- */
+.preloader { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: #FFFFFF; color: #0B0B0C;
+  clip-path: polygon(0 0, 100% 0, 200% 100%, 0 100%); transition: clip-path 450ms var(--ease-inout); }
+.preloader[data-state="out"] { clip-path: polygon(100% 0, 100% 0, 200% 100%, 200% 100%); }
+.mono-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: mono-draw 450ms var(--ease-out) forwards; }
+@keyframes mono-draw { to { stroke-dashoffset: 0; } }
+
+/* ---------- page wipe: ink panel crossing at the roof angle (DEC-016) ---------- */
+.wipe { position: fixed; inset: 0; z-index: 80; background: #0B0B0C; color: #FFFFFF; pointer-events: none; display: grid; place-items: center;
+  clip-path: polygon(0 0, -150% 0, -100% 100%, 0 100%); }
+.wipe[data-state="in"] { pointer-events: auto; clip-path: polygon(0 0, 250% 0, 300% 100%, 0 100%); transition: clip-path var(--dur-page) var(--ease-inout); }
+.wipe[data-state="out"] { clip-path: polygon(250% 0, 250% 0, 300% 100%, 300% 100%); transition: clip-path var(--dur-page) var(--ease-inout); }
+.wipe-mark { width: 40px; height: 54px; }
+
+/* ---------- shared image card → project (View Transitions API) ---------- */
+::view-transition-group(project-image) { animation-duration: var(--dur-reveal); animation-timing-function: var(--ease-inout); }
+::view-transition-old(project-image), ::view-transition-new(project-image) { height: 100%; object-fit: cover; }
+::view-transition-old(root) { animation: 500ms var(--ease-inout) both vt-fade-out; }
+::view-transition-new(root) { animation: 700ms var(--ease-out) 300ms both vt-fade-in; }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader, .wipe { display: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* ---------- hero entrance (MOTION_DIRECTION → Entrance timeline) ---------- */
+.hero-mask { display: block; overflow: hidden; padding: .04em 0; }
+.hero-letter { display: block; transform: translateY(105%); transition: transform var(--dur-hero) var(--ease-out); }
+.hero-zoom { transform: scale(1.12); transition: transform var(--dur-hero-photo) var(--ease-out); }
+.hero-label { opacity: 0; transition: opacity var(--dur-ui) var(--ease-out) 950ms; }
+.hero.is-go .hero-letter, .hero.is-go .hero-zoom { transform: none; }
+.hero.is-go .hero-label { opacity: 1; }
+@media (max-width: 767px) { .hero-zoom { transform: scale(1.06); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-letter, .hero-zoom { transform: none !important; transition: none !important; }
+  .hero-label { opacity: 1; transition: none; }
+}

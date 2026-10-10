@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="Casas autorais em Santa Catarina: arquitetura, interiores e paisagismo, do projeto à obra." />
+    <meta name="theme-color" content="#FFFFFF" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/michroma-400.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/AktivGrotesk-Regular.woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      // LCP: preload the hero photo only when the first route is the home
+      if (location.pathname === '/') {
+        var l = document.createElement('link');
+        l.rel = 'preload'; l.as = 'image'; l.type = 'image/avif'; l.fetchPriority = 'high';
+        l.setAttribute('imagesrcset', '/img/hero/photo-640.avif 640w, /img/hero/photo-960.avif 960w, /img/hero/photo-1280.avif 1280w, /img/hero/photo-1920.avif 1920w, /img/hero/photo-2560.avif 2560w');
+        l.setAttribute('imagesizes', 'max(100vw, 104vh)');
+        document.head.appendChild(l);
+      }
+    </script>
+    <title>Nord Arch — Arquitetura residencial em Santa Catarina</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
