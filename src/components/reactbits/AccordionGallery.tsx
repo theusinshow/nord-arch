@@ -34,6 +34,8 @@ export interface AccordionGalleryProps {
   className?: string;
   /** Nord Arch: called when the already-active panel is clicked (shared-image navigation). */
   onOpen?: (index: number, img: HTMLImageElement | null) => void;
+  /** Nord Arch: notified when the expanded panel changes (-1 = all closed). */
+  onActiveChange?: (index: number) => void;
 }
 
 const DEFAULT_ITEMS: AccordionGalleryItem[] = [
@@ -64,7 +66,8 @@ const AccordionGallery = ({
   showLabels = true,
   grayscale = true,
   className = '',
-  onOpen
+  onOpen,
+  onActiveChange
 }: AccordionGalleryProps) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const panelRefs = useRef<(HTMLElement | null)[]>([]);
@@ -77,7 +80,8 @@ const AccordionGallery = ({
 
   const vertical = orientation === 'vertical';
   const count = items.length;
-  const [active, setActive] = useState(Math.min(Math.max(defaultIndex, 0), count - 1));
+  const [active, setActive] = useState(defaultIndex < 0 ? -1 : Math.min(defaultIndex, count - 1));
+  useEffect(() => onActiveChange?.(active), [active, onActiveChange]);
 
   const prefersReduced =
     typeof window !== 'undefined' && window.matchMedia
@@ -112,7 +116,7 @@ const AccordionGallery = ({
         tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease }, 0);
 
         if (media) {
-          const drift = Math.max(-1.5, Math.min(1.5, active - i));
+          const drift = active < 0 ? 0 : Math.max(-1.5, Math.min(1.5, active - i));
           const shift = drift * parallax * mediaSize * 0.06;
           const gray = grayscale ? (isActive ? 0 : 1) : 0;
           tl.to(
@@ -220,6 +224,7 @@ const AccordionGallery = ({
       className={`flex ${vertical ? 'flex-col' : 'flex-row'} w-full max-w-full [perspective:1400px] max-[520px]:!flex-col max-[520px]:[perspective:none] ${className}`}
       style={{ gap: `${gap}px`, height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px` }}
       role="list"
+      onMouseLeave={() => defaultIndex < 0 && setActive(-1)}
       aria-label="Projetos em destaque"
     >
       {items.map((item, i) => {

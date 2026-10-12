@@ -1,8 +1,8 @@
-import { Ticket } from '@/components/motion/Ticket'
-import { contact, contactPage, credits, privacy } from '@/content/site'
-import { driftTiles, projects } from '@/content/projects'
+import { CtaBand } from '@/components/home/CtaBand'
+import { contact, contactPage, credits, cta, privacy } from '@/content/site'
+import { waLink } from '@/lib/whatsapp'
+import { projects } from '@/content/projects'
 import { usePageMeta } from '@/lib/hooks'
-import manifestCfg from '../../scripts/images.config.json'
 
 export function Contact() {
   usePageMeta('Contato — Nord Arch', 'Converse com a Nord Arch pelo WhatsApp sobre o seu terreno e o seu programa.')
@@ -19,7 +19,7 @@ export function Contact() {
           </address>
         </div>
         <div className="col-span-4 sm:col-span-8 lg:col-span-5 lg:col-start-7">
-          <Ticket variant="contact" />
+          <CtaBand variant="panel" id="agendar" title={cta.contact.title} line={cta.contact.line} href={waLink('contact')} />
         </div>
       </div>
     </div>
@@ -28,9 +28,6 @@ export function Contact() {
 
 export function Credits() {
   usePageMeta('Créditos — Nord Arch', 'Créditos das obras, fotografias e ferramentas usadas neste estudo conceitual.')
-  const reserve = (manifestCfg as { drift: string[] }).drift
-    .map((f) => f.split('/')[0].replace(/ · Divisare$/, ''))
-    .filter((v, i, a) => a.indexOf(v) === i)
   return (
     <div className="wrap pt-[calc(76px+var(--sec-m))]">
       <h1 className="t-h1">Créditos</h1>
@@ -58,12 +55,6 @@ export function Credits() {
           </tbody>
         </table>
       </div>
-      <h2 className="t-label mt-[var(--sec-m)]">Imagens de apoio (faixa da home, {driftTiles.length} imagens)</h2>
-      <ul className="t-caption mt-4 max-w-none columns-1 gap-6 text-muted sm:columns-2">
-        {reserve.map((r) => (
-          <li key={r} className="mb-1">{r} — Divisare</li>
-        ))}
-      </ul>
       <p className="t-caption mt-[var(--sec-m)] text-muted">{credits.fonts}</p>
       <p className="t-caption mt-2 text-muted">{credits.components}</p>
     </div>

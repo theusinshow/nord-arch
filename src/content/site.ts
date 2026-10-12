@@ -16,20 +16,33 @@ export const hero = {
 
 export const home = {
   manifesto: 'Cada casa nasce do lugar onde vai ficar.', // CNT-002
-  drift: {
-    title: 'Doze casas, uma mesma linguagem.', // CNT-016
-    line: 'Madeira, pedra, luz difusa e espaço em volta.',
-    link: 'Ver os 12 projetos',
-  },
   highlightsLabel: 'Destaques',
   invitation: 'Tem um terreno e um programa em mente?',
+  ctaLine: 'Mande a cidade, o tamanho do terreno e o que a casa precisa ter. A primeira conversa é pelo WhatsApp.', // CNT-016 (replaces the Drift Wall plate copy)
+  ctaButton: 'Conversar no WhatsApp',
 }
 
-export const ticket = {
-  home: { label: 'Convite · WhatsApp', title: 'Comece pelo seu terreno', stub: 'Destaque aqui' },
-  project: { label: 'Convite · WhatsApp', title: (name: string) => `Conversar sobre a ${name}`, stub: 'Destaque aqui' },
-  contact: { label: 'Convite · WhatsApp', title: 'Agende a primeira conversa', stub: 'Destaque aqui' },
-  done: 'Abrindo a conversa no WhatsApp…',
+// "Lugares" (DEC-025) — the twelve sites by region of Santa Catarina (fictional placements, DEC-012)
+export const places = {
+  label: 'Lugares',
+  title: 'Doze terrenos, do litoral à serra.',
+  regions: [
+    { name: 'Litoral', slugs: ['marram-house', 'casas-ferrugem', 'mound-pavilion', 'atelie-saco-dos-limoes'] },
+    { name: 'Serra', slugs: ['casa-pedra-furada', 'casa-campo-dos-padres', 'five-gables', 'firn-house', 'steppe-house'] },
+    { name: 'Vales e planalto', slugs: ['pleat-house', 'casa-treze-tilias', 'celeiro-testo-alto'] },
+  ],
+}
+
+// Black CTA blocks with a standard button (DEC-025, DEC-027) — replaced the Tear Ticket everywhere
+export const cta = {
+  project: {
+    title: (name: string) => `Conversar sobre a ${name}`,
+    line: (code: string) => `A mensagem já sai com o nome e o código do projeto (${code}).`,
+  },
+  contact: {
+    title: 'Agende a primeira conversa',
+    line: 'Conte a cidade do terreno, o programa e um projeto de referência. A mensagem já vem com esse roteiro.',
+  },
 }
 
 export const studio = {

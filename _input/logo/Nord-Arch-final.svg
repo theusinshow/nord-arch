@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Nord Arch — Monograma NA final</title>
+  <desc id="description">Monograma NA refinado a partir do desenho original. A ponta saliente da direita foi removida e a moldura volta a encontrar diretamente a haste externa. O A interno, as proporções, as diagonais paralelas e o traço uniforme de 26 unidades foram preservados. Fundo transparente e geometria vetorial editável.</desc>
+  <g id="monograma-na" stroke="#000000" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4">
+    <path id="moldura-fechada" d="M140 410V94L360 240.66667V410"/>
+    <path id="a-original-refinado" d="M190 410V178L310 258V410M190 258L310 338"/>
+  </g>
+</svg>

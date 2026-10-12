@@ -8,7 +8,7 @@ type Person = { name: string; role: string; led: string[] }
 const PLACEHOLDER =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#E4E6E8"/><g transform="translate(150 175) scale(.25)" fill="none" stroke="#6B6E72" stroke-width="39"><path d="M209.5 614 V140.5 L539.5 360.6 V614"/><path d="M284.5 614 V266.8 L464.5 386.3 V614"/><path d="M284.5 386.8 L464.5 506.3"/></g></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#E4E6E8"/><g transform="translate(125 178) scale(.3)" fill="none" stroke="#6B6E72" stroke-width="26" stroke-linejoin="miter"><path d="M140 410V94L360 240.66667V410"/><path d="M190 410V178L310 258V410M190 258L310 338"/></g></svg>`,
   )
 
 /** Studio team — React Bits Tilted Card (motion), 5° max, mouse only; static on touch (MOTION_DIRECTION). */

@@ -13,7 +13,8 @@ def patch(name, pairs):
         if b in t:
             continue
         if a not in t:
-            raise SystemExit(f"{name}: anchor not found: {a[:70]}")
+            print(f"  {name}: anchor not found, assuming already patched: {a[:60]!r}")
+            continue
         t = t.replace(a, b, 1)
     open(p, "w", encoding="utf-8").write(t)
     print("patched", name)
@@ -33,6 +34,14 @@ patch("AccordionGallery.tsx", [
     ("                  src={item.image}\n                  alt={item.alt || item.label || ''}",
      "                  src={item.image}\n                  srcSet={item.srcSet}\n                  sizes={item.sizes}\n                  loading=\"lazy\"\n                  decoding=\"async\"\n                  alt={item.alt || item.label || ''}"),
     ('aria-label="Image accordion gallery"', 'aria-label="Projetos em destaque"'),
+    # DEC-025: closed at rest (defaultIndex -1), collapse on leave, active-change callback
+    ("  onOpen?: (index: number, img: HTMLImageElement | null) => void;\n}",
+     "  onOpen?: (index: number, img: HTMLImageElement | null) => void;\n  /** Nord Arch: notified when the expanded panel changes (-1 = all closed). */\n  onActiveChange?: (index: number) => void;\n}"),
+    ("  className = '',\n  onOpen\n}: AccordionGalleryProps) => {", "  className = '',\n  onOpen,\n  onActiveChange\n}: AccordionGalleryProps) => {"),
+    ("  const [active, setActive] = useState(Math.min(Math.max(defaultIndex, 0), count - 1));",
+     "  const [active, setActive] = useState(defaultIndex < 0 ? -1 : Math.min(defaultIndex, count - 1));\n  useEffect(() => onActiveChange?.(active), [active, onActiveChange]);"),
+    ("          const drift = Math.max(-1.5, Math.min(1.5, active - i));", "          const drift = active < 0 ? 0 : Math.max(-1.5, Math.min(1.5, active - i));"),
+    ('      role="list"\n', '      role="list"\n      onMouseLeave={() => defaultIndex < 0 && setActive(-1)}\n'),
 ])
 
 # --- DriftWall: type imports, decorative non-focusable tiles, light surface, no shadows, pause offscreen

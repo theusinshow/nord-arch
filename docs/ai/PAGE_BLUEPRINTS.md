@@ -59,10 +59,10 @@
 |---|---|---|---|---|---|
 | 1 | Hero | afirmar | "N O R D / A R C H", labels "SANTA CATARINA", "ARQUITETURA" | photo NA—01 | no |
 | 2 | Manifesto | posicionar | the house is born from the place (CNT-002) | — | no |
-| 3 | Drift Wall | imergir | one coherent language | 12–18 decorative tiles | link to `/projetos` in the plate only |
+| 3 | Lugares (DEC-025) | situar | the 12 sites by region of SC | place · project · code | each row links to its project |
 | 4 | Highlights | escolher | every work has a name | caption | the card is the link (no "Ver projeto →") |
 | 5 | Index link | aprofundar | "12 obras" | real count from data | link |
-| 6 | Tear Ticket `home` | converter | "Convite · comece pelo seu terreno" (CNT-011) | — | WhatsApp |
+| 6 | Black CTA band (DEC-025) | converter | "Tem um terreno e um programa em mente?" + standard button "Conversar no WhatsApp" | — | WhatsApp |
 
 ---
 
@@ -242,6 +242,8 @@ Short text, ≤ 200 words (CNT-013):
 A centered monogram (static), a one-line message in Michroma h2 and the link "Ver os projetos" (copy CNT-017).
 
 ---
+
+> **Superseded by DEC-027 (2026-10-12):** every Tear Ticket is replaced by the black `CtaBand` (band on Projeto, panel on Contato). The messages below remain valid.
 
 ## Component spec: Tear Ticket variants (DEC-017)
 

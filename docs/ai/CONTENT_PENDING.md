@@ -1,7 +1,7 @@
 # Content Pending
 
 ## Status
-**Update 2026-10-10 (execution):** CNT-002…CNT-018 are written in `src/content/site.ts` and `src/content/projects.ts`. All 132 image alts are in `src/content/alts.json`. Still open: **CNT-001** (official SVG logo) and the **CNT-007 portrait** decision (the placeholder is in use).
+**Update 2026-10-10 (execution):** CNT-002…CNT-018 are written in `src/content/site.ts` and `src/content/projects.ts`. All 132 image alts are in `src/content/alts.json`. **CNT-001 is closed** (2026-10-12): the official SVG is `_input/logo/Nord-Arch-final.svg` (DEC-026). Still open: the **CNT-007 portrait** decision (the placeholder is in use).
 
 Nord Arch is a fictional study (DEC-011). Every item below is something **we** write or define. Nothing is waited on from a client.
 
@@ -18,7 +18,7 @@ The dynamic tokens used in the copy (`{name}`, `{code}`, `{city}`, `{area}`, `{p
 
 ### CNT-001 — Logo as vector SVG
 **Type:** brand asset
-**Status:** Not received (only the PNG `_input/logo/nord-arch-monograma.png`, 750 px)
+**Status:** ✅ Received 2026-10-12 — `_input/logo/Nord-Arch-final.svg` (stroke-based, applied, DEC-026)
 **Impact:**
 - the preloader draws the monogram stroke by stroke, so it needs a stroke-based SVG;
 - the favicon needs a 16 px legibility test;

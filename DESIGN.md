@@ -83,7 +83,7 @@ Declared deviations from the scale: 11 px, 13 px and the clamp end-points.
 
 - **Header:** wordmark lockup on the left (monogram + "NORD ARCH"); nav on the right (Projetos · Estúdio · WhatsApp). White text and transparent over the hero; ink on a white background elsewhere, which reads as no bar on the white page (DEC-023).
 - **Links and buttons:**
-  - No filled pill buttons.
+  - No filled pill buttons. The one standard button is the rectangular white-on-black CTA in the home band (`.btn-invert`, DEC-025).
   - A text link is underlined on hover and focus.
   - The primary interactive fill is the black↔white inversion (Tear Ticket on hover).
 - **Project card (Parede):**
@@ -118,6 +118,8 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 3. Underline as the state for text links and the active filter.
 4. Photographs as the only source of colour.
 5. Jumps of up to 280 px between sections, to create pauses.
+6. **Black blocks, used sparingly**, to highlight a CTA: an ink section (`#0B0B0C`) with white type and a white rectangular button (radius 0) that inverts on hover. One per page at most (DEC-025).
+7. Greyscale photos at rest in the Home highlights, regaining colour on hover/focus (DEC-025).
 
 **Proíbe**
 1. Any chromatic accent, including WhatsApp green.

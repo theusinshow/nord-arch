@@ -1,26 +1,28 @@
 // N + A monoline monogram with the 33.7° shed roof (DEC-008).
-// Centreline trace of _input/logo/nord-arch-monograma.png — placeholder until the official SVG (CNT-001).
+// Official vector: _input/logo/Nord-Arch-final.svg (CNT-001, DEC-026) — stroke 26, miter joins.
 export const MONOGRAM_PATHS = [
-  'M209.5 614 V140.5 L539.5 360.6 V614',
-  'M284.5 614 V266.8 L464.5 386.3 V614',
-  'M284.5 386.8 L464.5 506.3',
+  'M140 410V94L360 240.66667V410', // closed frame
+  'M190 410V178L310 258V410M190 258L310 338', // inner A
 ]
+export const MONOGRAM_VIEWBOX = '124 66 252 348' // tight box incl. the miter tips
+export const MONOGRAM_STROKE = 26
 
 type Props = { className?: string; title?: string; draw?: boolean }
 
 export function Monogram({ className, title, draw }: Props) {
   return (
     <svg
-      viewBox="170 90 410 540"
+      viewBox={MONOGRAM_VIEWBOX}
       className={className}
       role={title ? 'img' : undefined}
       aria-label={title}
       aria-hidden={title ? undefined : true}
       fill="none"
       stroke="currentColor"
-      strokeWidth={39}
+      strokeWidth={MONOGRAM_STROKE}
       strokeLinejoin="miter"
-      strokeMiterlimit={10}
+      strokeMiterlimit={4}
+      strokeLinecap="butt"
     >
       {MONOGRAM_PATHS.map((d, i) => (
         <path key={d} d={d} pathLength={1} className={draw ? 'mono-draw' : undefined} style={draw ? { animationDelay: `${i * 150}ms` } : undefined} />

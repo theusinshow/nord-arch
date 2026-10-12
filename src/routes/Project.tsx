@@ -3,7 +3,9 @@ import { ProjectLink } from '@/components/layout/Site'
 import { Picture } from '@/components/ui/Picture'
 import { Ficha } from '@/components/ui/Parts'
 import { Reveal } from '@/components/motion/Reveal'
-import { Ticket } from '@/components/motion/Ticket'
+import { CtaBand } from '@/components/home/CtaBand'
+import { cta } from '@/content/site'
+import { waLink } from '@/lib/whatsapp'
 import { bySlug, cardOf, galleryOf, nextOf, openingOf, scopeLabel, type Img } from '@/content/projects'
 import { usePageMeta } from '@/lib/hooks'
 import NotFound from './NotFound'
@@ -95,14 +97,7 @@ export default function Project() {
         </div>
       </section>
 
-      <section className="wrap mt-[var(--sec-l)]" aria-labelledby="conversar">
-        <h2 id="conversar" className="sr-only">Conversar sobre a {p.name}</h2>
-        <div className="grid-12">
-          <div className="col-span-4 sm:col-span-8 lg:col-span-7 lg:col-start-6">
-            <Ticket variant="project" project={p} />
-          </div>
-        </div>
-      </section>
+      <CtaBand id="conversar" title={cta.project.title(p.name)} line={cta.project.line(p.code)} href={waLink('project', p)} />
 
       <nav className="wrap mt-[var(--sec-m)]" aria-label="Próximo projeto">
         <ProjectLink slug={next.slug} className="group grid-12 items-end gap-y-6 border-t border-border pt-4">

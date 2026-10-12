@@ -31,6 +31,9 @@
 | DEC-022 | 2026-10-10 | Motion rule exceptions + doc-verifier fixes | ativa |
 | DEC-023 | 2026-10-10 | Implementation drift reconciled (VT API, RR8, header, fonts, gallery spans…) | ativa |
 | DEC-024 | 2026-10-10 | Waiver: mobile simulated LCP > 2.5 s (designed entrance) | ativa |
+| DEC-025 | 2026-10-12 | Home revision: Lugares replaces Drift Wall; B&W closed highlights; black CTA band with standard button | ativa |
+| DEC-026 | 2026-10-12 | Official monogram SVG adopted (CNT-001 closed) | ativa |
+| DEC-027 | 2026-10-12 | Tear Ticket removed everywhere → black CTA block + standard button | ativa |
 
 Status: `ativa` · `superada por DEC-XXX` · `revertida`
 
@@ -355,6 +358,69 @@ Registry dependencies:
 - inline critical CSS.
 
 **Affects:** `QA_CHECKLIST.md` (performance).
+**Reversível:** sim
+
+## DEC-025 — Home revision after the developer's review
+**Data:** 2026-10-12 · **Etapa:** refinamento (feedback do desenvolvedor no navegador)
+
+**Decisão:**
+1. **The Drift Wall band is removed from the Home** (feedback: "mudar section completamente e mudar copy, zero sentido"). It is replaced by **"Lugares"**: the 12 sites grouped by region of Santa Catarina (Litoral · Serra · Vales e planalto). Each row reads place + project + code and links to the project. On desktop, hover or focus swaps a 4:5 photo on the left. Title: "Doze terrenos, do litoral à serra." It continues the manifesto "Cada casa nasce do lugar onde vai ficar." The Drift Wall component stays vendored but unused, and its reserve images no longer appear in `/creditos`.
+2. **Highlights (Accordion Gallery):** all panels are **closed** (equal widths) and **black and white** at rest. The hovered or focused panel expands and regains colour, and the accordion collapses again when the cursor leaves. The caption shows the codes at rest and the project when one is open. On mobile the stacked list is also greyscale.
+3. **Home closing:** the Tear Ticket is replaced by a **black CTA band** (ink background, white type) with a **standard rectangular button** ("Conversar no WhatsApp", white, radius 0, inverting on hover/focus). The developer added: "não precisa ser todo o site em branco, às vezes pode ter um trecho preto para destacar um CTA".
+
+**Why:** Direct developer review of the running site.
+**Affects:**
+- `src/routes/Home.tsx`, `src/components/home/{Places,CtaBand}.tsx`, `Highlights.tsx`, the AccordionGallery patch, `content/site.ts`, `/creditos`
+- `DESIGN.md` (rules: black used sparingly for CTA emphasis; greyscale highlights)
+- `PAGE_BLUEPRINTS.md` (Home)
+
+**Supersedes (partially):**
+- DEC-009/DEC-010: Drift Wall band on the Home.
+- DEC-017: the `home` Tear Ticket variant. The `project` and `contact` variants stay.
+
+**Alternativas descartadas:** keeping the Drift Wall with new copy.
+**Reversível:** sim
+
+## DEC-026 — Official monogram SVG adopted
+**Data:** 2026-10-12 · **Etapa:** refinamento
+**Decisão:** Replace the approximate centreline trace with the developer's final vector, `_input/logo/Nord-Arch-final.svg`.
+
+| Property | Value |
+|---|---|
+| Paths | 2 stroke paths: the closed frame and the inner A |
+| Stroke | uniform, 26 units |
+| Joins | miter, miterlimit 4 |
+| Roof diagonal | 33.69° (motif unchanged) |
+| Site viewBox | `124 66 252 348`, cropped to the mark including the miter tips |
+
+Changes in the final drawing:
+- The protruding right tip of the earlier drawing was removed.
+- The frame meets the outer stem directly.
+
+The mark is applied in `<Monogram>` (header, footer, preloader draw, wipe, 404), in the team placeholders and in `public/favicon.svg`.
+**Why:** The developer supplied the final logo file.
+**Affects:** `src/components/brand/Monogram.tsx`, `TeamCard.tsx`, `public/favicon.svg`, `CONTENT_PENDING.md` (CNT-001 closed).
+**Reversível:** sim
+
+## DEC-027 — Tear Ticket removed everywhere; black CTA block with a standard button
+**Data:** 2026-10-12 · **Etapa:** refinamento
+**Decisão:** Every Tear Ticket is replaced by the black CTA block from DEC-025. The component is `CtaBand`, with a `band` variant (full-bleed) and a `panel` variant (inside the grid).
+
+| Where | Variant | Title | Message |
+|---|---|---|---|
+| Project close | `band` | "Conversar sobre a {name}" | project message with name and code |
+| Contato | `panel` | "Agende a primeira conversa" | scripted message |
+
+- The button is the same everywhere: "Conversar no WhatsApp", white, radius 0, inverting on hover.
+- The WhatsApp messages are unchanged and still come from `lib/whatsapp.ts`.
+- The vendored `TearTicket.tsx` and the `Ticket` wrapper were deleted. `motion` remains only for the Tilted Card.
+
+**Why:** The developer asked to extend the home change ("tirar esse motion, botar botão padrão") to every page.
+**Affects:** `routes/Project.tsx`, `routes/Pages.tsx`, `components/home/CtaBand.tsx`, `content/site.ts`, `MOTION_DIRECTION.md`, `PAGE_BLUEPRINTS.md`.
+**Supersedes:**
+- DEC-017 entirely.
+- The Tear Ticket part of DEC-009, DEC-008 (tear angle) and DEC-022 (spring-back exception).
+
 **Reversível:** sim
 
 ---
