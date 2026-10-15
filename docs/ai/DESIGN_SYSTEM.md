@@ -10,7 +10,7 @@
 The site is a silent white gallery, and the only thing allowed to carry colour is the architecture photography.
 
 - **Form:** a rigid asymmetric 12-column grid with sharp edges (radius 0). The single non-orthogonal form is the monogram's **33.7° roof diagonal**.
-- **Type:** extended and monoline (Michroma), echoing the logo, with a neutral grotesk (Aktiv) for reading.
+- **Type:** Michroma for the wordmark and project names, Newsreader for the manifesto and concept, Aktiv for reading (DEC-032).
 
 ## Color Foundations
 
@@ -45,18 +45,19 @@ Light mode only. There is no accent colour (DEC-007).
 
 | Token / class | Face | Size | LH | Tracking | Case | Max measure |
 |---|---|---|---|---|---|---|
-| `.t-hero` | Michroma | clamp(56px, 14vw, 224px) | 0.9 | flex space-between | UPPER | 100% |
-| `.t-hero-label` | Michroma | 11px | 1.2 | 0.24em | UPPER | — |
-| `.t-display` | Michroma | clamp(39px, 5.2vw, 76px) | 1.05 | -0.01em | sentence | 18ch |
-| `.t-h1` | Michroma | clamp(28px, 4vw, 64px) | 1.1 | -0.01em | sentence | 20ch |
-| `.t-h2` | Michroma | clamp(25px, 2.8vw, 39px) | 1.15 | 0 | sentence | 24ch |
-| `.t-manifesto` | Michroma | clamp(22px, 2.6vw, 40px) | 1.3 | 0 | sentence | 30ch |
-| `.t-h3` | Michroma | 20px | 1.25 | 0 | sentence | — |
-| `.t-nav` | Michroma | 13px | 1 | 0.02em | sentence | — |
-| `.t-label` | Michroma | 11px | 1.3 | 0.04em | sentence | — |
-| `.t-wordmark` | Michroma | 14px | 1 | 0.32em | UPPER | — |
+| `.t-wordmark` | Michroma | 13px | 1 | 0.28em | UPPER | — |
+| `.t-display` | Michroma | clamp(36px, 4.6vw, 68px) | 1.08 | -0.01em | sentence | 16ch |
+| `.t-name` | Michroma | 20px | 1.25 | 0 | sentence | — |
+| `.t-name-sm` | Michroma | 14px | 1.35 | 0 | sentence | — |
+| `.t-h1` | Newsreader 400 | clamp(32px, 4vw, 56px) | 1.15 | -0.015em | sentence | 18ch |
+| `.t-h2` | Newsreader 400 | clamp(26px, 2.4vw, 36px) | 1.25 | 0 | sentence | 22ch |
+| `.t-manifesto` | Newsreader 400 | clamp(22px, 2.5vw, 40px) | 1.25 | -0.015em | sentence | 36em |
+| `.t-concept` | Newsreader 500 | clamp(20px, 1.7vw, 28px) | 1.45 | 0 | sentence | 34ch |
+| `.t-h3` | Aktiv 400 | 18px | 1.35 | 0 | sentence | — |
+| `.t-nav` | Aktiv 400 | 15px | 1 | 0 | sentence | — |
+| `.t-label` | Aktiv 400 | 12px | 1.35 | 0.04em | sentence | — |
 | `.t-body` | Aktiv 400 | 16px | 1.6 | 0 | sentence | 62ch |
-| `.t-caption` | Aktiv 400 (name 500) | 13px | 1.4 | 0 | sentence | 40ch |
+| `.t-caption` | Aktiv 400 | 13px | 1.45 | 0 | sentence | 46ch |
 
 - **Scale:** base 16, ratio 1.25. Off-scale values (11, 13 and the clamp ends) are declared deviations.
 - **Weights in use:** 400 everywhere, plus Aktiv 500 for caption names and ficha values. No 700. Nothing below 400.
@@ -102,13 +103,13 @@ Also `--space-0_5: 4px`.
 
 | Component | Rules |
 |---|---|
-| **Header** | Fixed with no bar. Lockup (monogram 28×36 + `.t-wordmark`) on the left; `.t-nav` items on the right. White over the hero (class toggled by an IntersectionObserver on the hero), ink elsewhere. Mobile: "Menu" text toggle opens a full-screen white panel. |
+| **Header** | Fixed. Lockup on the left; Projetos, Estúdio and WhatsApp (text link) on the right. Transparent over the hero, white elsewhere, ink type. White type only when a loaded hero photo has luminance ≤ 0.18. Mobile: "Menu" opens a white panel (DEC-032). |
 | **Footer** | Hairline on top. Wordmark · nav · e-mail · Instagram · city SC · study notice · Créditos · Privacidade. `.t-caption` muted. |
 | **Text link** | Ink, no underline at rest; underline on hover and focus. External links get `↗`. Arrows are allowed only on "Ver os projetos →" closing links, never on cards. |
 | **Buttons** | There are no conventional buttons. Interactive controls are text tabs (filter, view toggle), the "Menu" toggle and the Tear Ticket. Tabs are `.t-label`; the active tab is underlined; `aria-pressed` / `aria-selected`. |
 | **Project card** | Photo plus caption `**Name** · Place · Year`. The whole card is one `<a>`. No hover zoom on the card (motion is reserved); the caption name gets an underline on hover. |
 | **Index row** | Grid `5em 1fr 12em 5em`: code · name (`.t-h3`) · city · year, with a hairline bottom. Hover: the name is underlined and a desktop preview follows the cursor. |
-| **Ficha técnica** | `<dl>` with a 2-column grid: `.t-label` key and Aktiv 500 value, hairline under each row. |
+| **Ficha técnica** | `<table>`: `.t-label` key and Aktiv value, hairline under each row. |
 | **Section header** | `.t-label` on the left, an optional count on the right, a hairline above. No eyebrow + h2 + paragraph stack (anti-U13). |
 | **Tear Ticket** | See PAGE_BLUEPRINTS → Component spec. White, 1 px ink border, dashed perforation, radius 0, `tearAngle` 33.7. |
 | **Tags/badges** | None. Category is plain text in the caption or the ficha. |
@@ -160,7 +161,8 @@ Kept from the developer's references, as principles and not copies:
   --color-primary-fg: #FFFFFF;
 
   --font-display: "Michroma", "Eurostile", Arial, sans-serif;
-  --font-body: "Aktiv Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Aktiv Grotesk", "Aktiv Fallback", "Helvetica Neue", Arial, sans-serif;
 
   --spacing: 8px;
   --radius: 0px;

@@ -2,14 +2,12 @@ import { createBrowserRouter, Outlet, ScrollRestoration } from 'react-router'
 import { SiteProvider } from '@/components/layout/Site'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { Preloader } from '@/components/layout/Preloader'
 import Home from '@/routes/Home'
 
 function RootLayout() {
   return (
     <SiteProvider>
       <a href="#main" className="skip">Pular para o conteúdo</a>
-      <Preloader />
       <Header />
       <main id="main">
         <Outlet />

@@ -28,6 +28,8 @@ export interface Project {
   concept: string
   featured: boolean
   images: Img[]
+  /** Planta, corte e implantação. Absent until a drawing file exists in the manifest. */
+  drawings?: Partial<Record<'planta' | 'corte' | 'implantacao', Img>>
   hero?: { photo: Img; fg: Img; roofLine: number; luma: number }
   fictional: true
   credit: { architect: string; photographer: string; source: 'Divisare'; sourceTitle: string }
@@ -37,7 +39,6 @@ type RawImg = { src: string; w: number; h: number; ratio: string; widths: number
 type AltSet = { opening?: string; card?: string; gallery?: string[] }
 const M = manifest as unknown as {
   projects: Record<string, { opening: RawImg; card: RawImg; gallery: RawImg[] }>
-  drift: RawImg[]
   hero: { photo: RawImg; fg: RawImg; roofLine: number; luma: number }
 }
 const A = alts as Record<string, AltSet>
@@ -169,6 +170,5 @@ export const openingOf = (p: Project) => p.images.find((i) => i.role === 'openin
 export const cardOf = (p: Project) => p.images.find((i) => i.role === 'card')!
 export const galleryOf = (p: Project) => p.images.filter((i) => i.role === 'gallery')
 export const categories: Category[] = ['Residencial', 'Interiores', 'Paisagismo', 'Comercial']
-export const driftTiles: Img[] = M.drift.map((d) => img(d, 'drift', ''))
 export const scopeLabel: Record<Scope, string> = { arquitetura: 'Arquitetura', interiores: 'Interiores', paisagismo: 'Paisagismo', obra: 'Obra' }
 export const caption = (p: Project) => `${p.place === p.city ? p.city : `${p.place}, ${p.city}`} · ${p.year}`

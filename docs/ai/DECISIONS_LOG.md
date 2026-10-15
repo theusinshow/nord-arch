@@ -12,31 +12,33 @@
 | DEC-003 | 2026-10-09 | Positioning: authorial language | ativa |
 | DEC-004 | 2026-10-10 | Route map (5 main + 3 utility pages) | ativa |
 | DEC-005 | 2026-10-10 | Layout "Parede de Galeria" | ativa |
-| DEC-006 | 2026-10-10 | Typography Michroma + Aktiv Grotesk | ativa |
+| DEC-006 | 2026-10-10 | Typography Michroma + Aktiv Grotesk | parcialmente superada por DEC-032 |
 | DEC-007 | 2026-10-10 | Palette pure white / ink / grey, no accent | ativa |
 | DEC-008 | 2026-10-10 | Monogram logo; 33.7° roof angle as motif | ativa |
 | DEC-009 | 2026-10-10 | Motion map: intensity by rarity | ativa |
-| DEC-010 | 2026-10-10 | Hero: full-bleed photo + NORD/ARCH with depth cutout | ativa |
+| DEC-010 | 2026-10-10 | Hero: full-bleed photo + NORD/ARCH with depth cutout | superada por DEC-032 |
 | DEC-011 | 2026-10-10 | Scope: personal concept study, never published | ativa (supersedes the "cliente real" answer of 2026-10-10) |
 | DEC-012 | 2026-10-10 | Fictional 12-project roster, mixed naming rule | ativa |
-| DEC-013 | 2026-10-10 | Stack Vite + React + TS + Tailwind v4 + motion + gsap + Router | ativa |
+| DEC-013 | 2026-10-10 | Stack Vite + React + TS + Tailwind v4 + motion + gsap + Router | parcialmente superada por DEC-032 |
 | DEC-014 | 2026-10-10 | Quality targets (AA, CWV, bundle) | ativa |
-| DEC-015 | 2026-10-10 | Manifesto set in Michroma | ativa |
-| DEC-016 | 2026-10-10 | Card→project = shared image; other navigation = diagonal wipe | ativa |
+| DEC-015 | 2026-10-10 | Manifesto set in Michroma | superada por DEC-032 |
+| DEC-016 | 2026-10-10 | Card→project = shared image; other navigation = diagonal wipe | superada por DEC-032 |
 | DEC-017 | 2026-10-10 | Tear Ticket: one component, three variants | ativa |
-| DEC-018 | 2026-10-10 | Hero entrance overlaps preloader exit; wipe 600 ms | ativa |
-| DEC-019 | 2026-10-10 | gsap lazy-loaded; Accordion Gallery imported on approach | ativa |
+| DEC-018 | 2026-10-10 | Hero entrance overlaps preloader exit; wipe 600 ms | superada por DEC-032 |
+| DEC-019 | 2026-10-10 | gsap lazy-loaded; Accordion Gallery imported on approach | superada por DEC-032 |
 | DEC-020 | 2026-10-10 | Anti-slop exceptions T5, T9, pure white | ativa |
 | DEC-021 | 2026-10-10 | Copywriting skill for all copy | ativa |
 | DEC-022 | 2026-10-10 | Motion rule exceptions + doc-verifier fixes | ativa |
 | DEC-023 | 2026-10-10 | Implementation drift reconciled (VT API, RR8, header, fonts, gallery spans…) | ativa |
 | DEC-024 | 2026-10-10 | Waiver: mobile simulated LCP > 2.5 s (designed entrance) | ativa |
-| DEC-025 | 2026-10-12 | Home revision: Lugares replaces Drift Wall; B&W closed highlights; black CTA band with standard button | ativa |
+| DEC-025 | 2026-10-12 | Home revision: Lugares replaces Drift Wall; B&W closed highlights; black CTA band with standard button | parcialmente superada por DEC-032 |
 | DEC-026 | 2026-10-12 | Official monogram SVG adopted (CNT-001 closed) | ativa |
-| DEC-027 | 2026-10-12 | Tear Ticket removed everywhere → black CTA block + standard button | ativa |
+| DEC-027 | 2026-10-12 | Tear Ticket removed everywhere → black CTA block + standard button | superada por DEC-032 |
 | DEC-028 | 2026-10-12 | Home: studio intro, codes out of Lugares, "12 obras" link removed, typographic closing band, lockup centred | parcialmente superada por DEC-029 |
-| DEC-029 | 2026-10-12 | Lockup optical centre; "projeto" not "casa"; closing = three starting points | ativa |
-| DEC-030 | 2026-10-12 | Home Sobre + Serviços sections; full copy pass (copywriting skill); navbar refactored after flexis-mobility.com | ativa |
+| DEC-029 | 2026-10-12 | Lockup optical centre; "projeto" not "casa"; closing = three starting points | parcialmente superada por DEC-032 |
+| DEC-030 | 2026-10-12 | Home Sobre + Serviços sections; full copy pass (copywriting skill); navbar refactored after flexis-mobility.com | superada por DEC-032 |
+| DEC-031 | 2026-10-14 | Flex Carousel ("Obras") on the Studio page | superada por DEC-032 |
+| DEC-032 | 2026-10-15 | Galeria lenta: hero de uma obra, trio tipográfico, ficha de projeto | ativa |
 
 Status: `ativa` · `superada por DEC-XXX` · `revertida`
 
@@ -538,6 +540,25 @@ The roof-cut photo is kept. The `home` message variant was removed, and the Cont
 - **Motion exception:** the lens bends the cards in curves during drag and settle. This is a declared exception to "the 33.7° diagonal is the only non-orthogonal form": it applies only while moving, and the cards rest flat.
 
 **Affects:** `components/reactbits/FlexCarousel.tsx`, `components/motion/Works.tsx`, `routes/Studio.tsx`, `package.json` (`ogl`).
+**Reversível:** sim
+
+---
+
+## DEC-032 — Galeria lenta: uma obra por vez, ficha na página de projeto
+**Data:** 2026-10-15 · **Etapa:** redesign (pedido do desenvolvedor)
+
+**Decisão:** The home becomes a slow gallery and the project page becomes a technical sheet. This supersedes the letter hero (DEC-010), Michroma-for-everything (DEC-006, DEC-015), the Flexis header (DEC-030), the black CTA block (DEC-027), the React Bits galleries (DEC-019, DEC-031) and the preloader (DEC-018).
+
+1. **Hero.** One featured work, full viewport, small caption `nome — cidade, ano · código`. The caption links to the project. Featured works crossfade (8 s hold, 1.6 s fade). No NORD/ARCH letters, no layered parallax, no arrows. Pause control. Reduced motion shows the first work, still.
+2. **Type.** Michroma only for the wordmark and project names. Newsreader (OFL, `@fontsource/newsreader`, latin 400/500, self-hosted woff2) for the manifesto and the concept. Aktiv Grotesk, with the Arial fallback, for body, nav and labels. Uppercase only in the wordmark.
+3. **Home.** Manifesto is one sentence. Featured works scroll in an asymmetric rhythm (bleed, then a smaller frame, then white). Services are a text list. "Como trabalhamos" moves to `/estudio`. Places and the black closing band leave the home. WhatsApp stays a text link with the pre-filled message.
+4. **Header.** Transparent over the hero, white elsewhere, ink type. White type over the hero only when a loaded photo has measured luminance ≤ 0.18 (DESIGN.md). No black bar. Mobile menu is a white panel.
+5. **Project page.** Code, Michroma name, Newsreader concept, ficha as a `<table>`, and three first-class drawing slots (planta, corte, implantação) with a neutral empty frame when the file is absent. Photos stay large. Entering a project from inside the site masks the opening at 33.7°. Direct loads do not, so the opening can paint immediately.
+6. **Removed.** Accordion Gallery, Tilted Card, Flex Carousel, Drift Wall, Shuffle, Preloader, Reveal, and the dependencies `gsap`, `motion` and `ogl`.
+7. **Images.** Layout reserves the manifest aspect ratio. A missing file paints `#E4E6E8` in that box. No third-party images are committed.
+
+**Why:** The built work was arriving late, under a hero template and a single display face, and the project page had photographs without a sheet. The audience decides by recognising a house.
+**Affects:** `DESIGN.md`, `DESIGN_SYSTEM.md`, `src/styles/index.css`, home, header, project and studio routes, `package.json`.
 **Reversível:** sim
 
 ---

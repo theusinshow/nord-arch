@@ -25,7 +25,7 @@ export default function Projects() {
   }
 
   return (
-    <div className="wrap pt-[calc(73px+var(--sec-m))]">
+    <div className="wrap page">
       <div className="flex items-baseline justify-between gap-6">
         <h1 className="t-h1">Projetos</h1>
         <span className="t-label text-muted">{list.length}</span>
@@ -38,7 +38,7 @@ export default function Projects() {
               key={c ?? 'todas'}
               role="tab"
               aria-selected={c === cat}
-              className="t-label link min-h-11"
+              className="t-label link inline-flex min-h-11 min-w-11 items-center justify-center px-2"
               onClick={() => set('categoria', c ? slugOf(c) : null)}
             >
               {c ?? 'Todas'}
@@ -47,7 +47,7 @@ export default function Projects() {
         </div>
         <div className="flex gap-6" aria-label="Visualização">
           {(['lista', 'grade'] as const).map((v) => (
-            <button key={v} aria-pressed={view === v} className="t-label link min-h-11 capitalize" onClick={() => set('vista', v === 'lista' ? null : v)}>
+            <button key={v} aria-pressed={view === v} className="t-label link inline-flex min-h-11 min-w-11 items-center justify-center px-2 capitalize" onClick={() => set('vista', v === 'lista' ? null : v)}>
               {v}
             </button>
           ))}
@@ -100,7 +100,7 @@ function IndexList({ items }: { items: Project[] }) {
             >
               <span className="hidden t-label text-muted sm:block">{p.code}</span>
               <Picture img={cardOf(p)} sizes="64px" alt="" className="block sm:hidden" imgClassName="aspect-[4/5] w-16 object-cover" />
-              <span className="t-h3 group-hover:underline group-hover:underline-offset-4">
+              <span className="t-name min-w-0 group-hover:underline group-hover:underline-offset-4">
                 {p.name}
                 <span className="t-label mt-1 block text-muted sm:hidden">{p.code} · {p.city}</span>
               </span>

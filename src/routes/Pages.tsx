@@ -1,4 +1,4 @@
-import { CtaBand } from '@/components/home/CtaBand'
+import { TextCta } from '@/components/home/TextCta'
 import { contact, contactPage, credits, cta, privacy } from '@/content/site'
 import { waLink } from '@/lib/whatsapp'
 import { projects } from '@/content/projects'
@@ -7,19 +7,19 @@ import { usePageMeta } from '@/lib/hooks'
 export function Contact() {
   usePageMeta('Contato — Nord Arch', 'Converse com a Nord Arch pelo WhatsApp sobre o seu terreno e o seu programa.')
   return (
-    <div className="wrap pt-[calc(73px+var(--sec-m))]">
+    <div className="wrap page">
       <div className="grid-12 items-start gap-y-12">
         <div className="col-span-4 sm:col-span-8 lg:col-span-5">
           <h1 className="t-h1">Contato</h1>
           <p className="t-body mt-6">{contactPage.intro}</p>
           <address className="t-caption mt-[var(--sec-s)] flex flex-col gap-2 not-italic">
-            <a href={`mailto:${contact.email}`} className="link self-start">{contact.email}</a>
-            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="link self-start">{contact.instagram} ↗</a>
+            <a href={`mailto:${contact.email}`} className="link inline-flex min-h-[44px] items-center self-start">{contact.email}</a>
+            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="link inline-flex min-h-[44px] items-center self-start">{contact.instagram} ↗</a>
             <span className="text-muted">{contact.city}</span>
           </address>
         </div>
         <div className="col-span-4 sm:col-span-8 lg:col-span-5 lg:col-start-7">
-          <CtaBand variant="panel" id="agendar" title={cta.contact.title} line={cta.contact.line} href={waLink('contact')} />
+          <TextCta embedded id="agendar" title={cta.contact.title} line={cta.contact.line} href={waLink('contact')} />
         </div>
       </div>
     </div>
@@ -29,10 +29,10 @@ export function Contact() {
 export function Credits() {
   usePageMeta('Créditos — Nord Arch', 'Créditos das obras, fotografias e ferramentas usadas neste estudo conceitual.')
   return (
-    <div className="wrap pt-[calc(73px+var(--sec-m))]">
+    <div className="wrap page">
       <h1 className="t-h1">Créditos</h1>
       <p className="t-body mt-6">{credits.notice}</p>
-      <div className="mt-[var(--sec-m)] overflow-x-auto">
+      <div className="mt-[var(--sec-m)] max-w-full overflow-x-auto">
         <table className="t-caption w-full min-w-[720px] max-w-none border-t border-border text-left">
           <thead>
             <tr className="border-b border-border">
@@ -56,7 +56,6 @@ export function Credits() {
         </table>
       </div>
       <p className="t-caption mt-[var(--sec-m)] text-muted">{credits.fonts}</p>
-      <p className="t-caption mt-2 text-muted">{credits.components}</p>
     </div>
   )
 }
@@ -64,7 +63,7 @@ export function Credits() {
 export function Privacy() {
   usePageMeta('Privacidade — Nord Arch', 'Este estudo não usa cookies, rastreamento nem formulários.')
   return (
-    <div className="wrap pt-[calc(73px+var(--sec-m))]">
+    <div className="wrap page">
       <h1 className="t-h1">Privacidade</h1>
       <div className="mt-8 flex flex-col gap-4">
         {privacy.map((p) => (

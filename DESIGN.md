@@ -35,28 +35,28 @@ Light mode only. There is **no accent colour**: colour comes from the photograph
 
 ## Typography
 
-- **Display font:** Michroma 400. Fallback: `"Michroma", "Eurostile", "Arial", sans-serif` with `size-adjust`. Google Fonts, OFL, self-hosted from `public/fonts/michroma-400.woff2`, latin, preloaded.
-- **Body font:** Aktiv Grotesk 400/500. Fallback: `"Aktiv Grotesk", "Helvetica Neue", Arial, sans-serif`. Local licensed files, converted to subset woff2 and gitignored.
+- **Display font:** Michroma 400, only for the wordmark and project names. Fallback: `"Michroma", "Eurostile", Arial, sans-serif`. OFL, self-hosted `public/fonts/michroma-400.woff2`, preloaded.
+- **Serif:** Newsreader 400 (manifesto, page titles) and 500 (concept). Fallback: `"Newsreader", Georgia, "Times New Roman", serif`. OFL, from `@fontsource/newsreader`, latin woff2 in `public/fonts/`.
+- **Body font:** Aktiv Grotesk 400/500. Fallback: `"Aktiv Grotesk", "Aktiv Fallback", "Helvetica Neue", Arial, sans-serif`. Licensed files stay gitignored.
 - **Scale:** base 16, ratio 1.25. Steps: 10.24 / 12.8 / **16** / 20 / 25 / 31.25 / 39.06 / 48.83 / 61.04 / 76.29 / 95.37.
 
-| Role | Face | Size | Line-height | Tracking | Case | Measure |
+| Role | Class | Face | Size | Line-height | Tracking | Case |
 |---|---|---|---|---|---|---|
-| Hero letters | Michroma | `clamp(56px, 14vw, 224px)` | 0.9 | distributed (space-between) | UPPER | full width |
-| Hero labels | Michroma | 11px | 1.2 | +0.24em | UPPER | — |
-| Display (project name) | Michroma | `clamp(39px, 5.2vw, 76px)` | 1.05 | −0.01em | sentence | 18ch |
-| h1 | Michroma | `clamp(28px, 4vw, 64px)` | 1.1 | −0.01em | sentence | 20ch |
-| h2 | Michroma | `clamp(25px, 2.8vw, 39px)` | 1.15 | 0 | sentence | 24ch |
-| Manifesto | Michroma | `clamp(22px, 2.6vw, 40px)` | 1.3 | 0 | sentence | ≤ 30ch (texts short: home 1–2 sentences) |
-| h3 | Michroma | 20px | 1.25 | 0 | sentence | — |
-| Nav | Michroma | 13px | 1 | +0.02em | sentence | — |
-| Label / ficha key | Michroma | 11px | 1.3 | +0.04em | sentence | — |
-| Wordmark | Michroma | 14px | 1 | +0.32em | UPPER | — |
-| Body | Aktiv 400 | 16px | 1.6 | 0 | sentence | 62ch |
-| Caption | Aktiv 500 name + 400 rest | 13px | 1.4 | 0 | sentence | 40ch |
+| Wordmark | `.t-wordmark` | Michroma | 13px (11px < 640) | 1 | +0.28em | UPPER |
+| Project name | `.t-display` | Michroma | `clamp(36px, 4.6vw, 68px)` | 1.08 | −0.01em | sentence |
+| Project name, list | `.t-name` | Michroma | 20px | 1.25 | 0 | sentence |
+| Project name, caption | `.t-name-sm` | Michroma | 14px | 1.35 | 0 | sentence |
+| Page title | `.t-h1` | Newsreader 400 | `clamp(32px, 4vw, 56px)` | 1.15 | −0.015em | sentence |
+| Section title | `.t-h2` | Newsreader 400 | `clamp(26px, 2.4vw, 36px)` | 1.25 | 0 | sentence |
+| Manifesto | `.t-manifesto` | Newsreader 400 | `clamp(22px, 2.5vw, 40px)` | 1.25 | −0.015em | sentence |
+| Concept | `.t-concept` | Newsreader 500 | `clamp(20px, 1.7vw, 28px)` | 1.45 | 0 | sentence |
+| Minor title | `.t-h3` | Aktiv 400 | 18px | 1.35 | 0 | sentence |
+| Nav | `.t-nav` | Aktiv 400 | 15px | 1 | 0 | sentence |
+| Label / ficha key | `.t-label` | Aktiv 400 | 12px | 1.35 | +0.04em | sentence |
+| Body | `.t-body` | Aktiv 400 | 16px | 1.6 | 0 | sentence |
+| Caption | `.t-caption` | Aktiv 400 | 13px | 1.45 | 0 | sentence |
 
-Declared deviations from the scale: 11 px, 13 px and the clamp end-points.
-
-**Loading:** woff2 only, at most 4 files and ≤ 90 KB total, `font-display: swap`, Michroma preloaded.
+**Loading:** woff2 only, `font-display: swap`. Preload Michroma (wordmark and the hero caption). Newsreader loads with the CSS. Aktiv is not preloaded: the files are gitignored and a missing preload would 404. `font-synthesis: none`.
 
 ## Spacing & layout
 
@@ -81,7 +81,7 @@ Declared deviations from the scale: 11 px, 13 px and the clamp end-points.
 
 ## Components
 
-- **Header:** wordmark lockup on the left (monogram + "NORD ARCH"); nav on the right (Projetos · Estúdio · WhatsApp). White text and transparent over the hero; ink on a white background elsewhere, which reads as no bar on the white page (DEC-023).
+- **Header:** wordmark lockup on the left (monogram + "NORD ARCH"); nav on the right (Projetos · Estúdio · WhatsApp as a text link). Transparent over the hero, white elsewhere, ink type. White type over the hero only when the loaded photo's measured luminance is ≤ 0.18. No black bar (DEC-032). Mobile: a "Menu" control opens a white panel.
 - **Links and buttons:**
   - No filled pill buttons. The one standard button is the rectangular white-on-black CTA in the home band (`.btn-invert`, DEC-025).
   - A text link is underlined on hover and focus.
@@ -93,22 +93,21 @@ Declared deviations from the scale: 11 px, 13 px and the clamp end-points.
   - Columns: code `NA—03` · name · city · year, divided by hairlines.
   - On desktop, a photo preview follows the cursor.
 - **Filter:** text tabs (Todas · Residencial · Interiores · Paisagismo · Comercial). The active tab is underlined. No chips or pills.
-- **Ficha técnica:** a key/value list. Michroma 11 px keys, Aktiv values, a hairline under each row.
+- **Ficha técnica:** a `<table>`. Aktiv 12 px keys, Aktiv values, a hairline under each row.
 - **Tear Ticket:** one component with variants `home`, `project` and `contact` (see PAGE_BLUEPRINTS). White fill, 1 px ink border, dashed perforation, radius 0.
-- **Accordion Gallery, Drift Wall, Tilted Card, Flex Carousel:** React Bits components, fully rethemed (see MOTION_DIRECTION; Flex Carousel = Studio "Obras", DEC-031).
+- **Drawing slot:** planta, corte and implantação are first-class frames. An absent file is a neutral `#E4E6E8` mat with the label in ink, at the slot's aspect ratio (DEC-032).
 
 ## Elevation
 
-**Flat.** There are no shadows at any level, including the Tilted Card and the cursor preview, and radius is 0 everywhere. Separation comes from space, then from a 1 px hairline. Depth exists only in motion: the hero cutout layer and the parallax.
+**Flat.** There are no shadows at any level, and radius is 0 everywhere. Separation comes from space, then from a 1 px hairline. Depth exists only in the 33.7° mask that opens a project.
 
 ## Motion
 
 Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 
-- **Intensity:** expressive *by rarity*.
-- **Tokens:** 200 / 600 / 1200 ms, page wipe 600 + 600, hero letters 1200 each (staggered 80), hero photo 2400.
+- **Intensity:** one slow crossfade between featured works (1.6 s, hold 8 s) and, at most, the 33.7° mask when a project is opened from inside the site (1.2 s).
 - **Easing:** out `cubic-bezier(.2,.7,.1,1)`; in-out `cubic-bezier(.7,0,.2,1)`.
-- **Never animated:** body text, ficha técnica, nav, and anything layout-affecting on scroll. There is no scroll-jacking.
+- **Never animated:** body text, ficha técnica, nav, and anything layout-affecting on scroll. There is no scroll-jacking. `prefers-reduced-motion` disables the crossfade and the mask.
 
 ## Design rules
 
@@ -126,19 +125,19 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 1. Any chromatic accent, including WhatsApp green.
 2. Shadows and border-radius.
 3. Gradients, scrims or text-shadow over photos.
-4. Uppercase outside the wordmark and the hero letters and labels.
+4. Uppercase outside the wordmark.
 5. Weight 700+, or any weight below 400.
 
 ## Anti-slop — exceções deliberadas
 
 - T5 (peso único): Michroma only exists in 400. Hierarchy comes from size, space and the contrast with Aktiv. This is accepted because the extended, single-weight face echoes the logo's uniform monoline stroke.
-- T9 (caixa-alta + tracking): in the "NORD ARCH" wordmark, the hero letters/labels ("N O R D / A R C H", "SANTA CATARINA") and, at the developer's request, the navbar and its menu panel (DEC-030, a 1:1 of flexis-mobility.com). Everywhere else, sentence case.
+- T9 (caixa-alta + tracking): only in the "NORD ARCH" wordmark. Everywhere else, sentence case (DEC-032 supersedes the navbar exception in DEC-030).
 - U-branco (branco puro #FFFFFF em vez de off-white): the developer's call. A pure white wall keeps the photos' colour uncontaminated, like a gallery white cube. Mitigation: neutral-cool greys that do not fight the warm timber in the photos.
 - U11 (retratos gerados) — **condicional**: só se CNT-007 escolher a opção A (retratos gerados por IA de equipe fictícia). Nesse caso os retratos ficam rotulados como fictícios em `/creditos` e a legenda de cada pessoa cita os projetos NA—NN que conduziu. Com a opção B (placeholder de monograma), a exceção cai.
 
 **Teste do transplante:** none of these fits a competitor's site without a rewrite:
 
-- the hero where "N O R D" passes **behind** the house and "A R C H" sits in front;
+- the home where one house fills the viewport and the next arrives by a slow crossfade, captioned `nome — cidade, ano · código`;
 - the 33.7° monogram angle reused in the page wipe and in the tear of the WhatsApp ticket;
 - the museum-label caption "name · place · year" with the public `NA—NN` numbering.
 
@@ -163,7 +162,8 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
   --spacing: 8px;
 
   --font-display: "Michroma", "Eurostile", Arial, sans-serif;
-  --font-body: "Aktiv Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Aktiv Grotesk", "Aktiv Fallback", "Helvetica Neue", Arial, sans-serif;
 
   --radius: 0px;
   --container: 1600px;

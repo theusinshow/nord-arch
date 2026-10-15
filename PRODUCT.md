@@ -55,7 +55,7 @@ The voice is **quiet, precise, editorial, confident and unhurried**.
 ## Notes
 
 - The brand is a developer-supplied monogram (N + A, monoline, 33.7° shed roof). An official SVG is still missing.
-- Fonts: Michroma (Google, OFL) and Aktiv Grotesk (commercial, used locally for the study only).
+- Fonts: Michroma (wordmark and project names) and Newsreader (manifesto and concept), both OFL; Aktiv Grotesk (commercial, body and labels, used locally for the study only).
 - Not published: `noindex,nofollow`, a study notice in the footer, and a `/creditos` page.
 - If ever published, the photos must be replaced or licensed, the Aktiv web licence obtained, and noindex removed. See `/docs/ai/QA_CHECKLIST.md` → Publication gate.
 - Executor: Claude Code. Stack: Vite + React + TS + Tailwind v4 + motion + gsap + React Router.

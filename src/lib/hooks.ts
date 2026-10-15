@@ -35,20 +35,3 @@ export function usePageMeta(title: string, description?: string) {
   }, [title, description])
 }
 
-/** Adds `is-in` once the element enters the viewport (diagonal reveal). */
-export function useInView<T extends Element>(ref: React.RefObject<T | null>, threshold = 0.25) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el || inView) return
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        setInView(true)
-        io.disconnect()
-      }
-    }, { threshold })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [ref, threshold, inView])
-  return inView
-}

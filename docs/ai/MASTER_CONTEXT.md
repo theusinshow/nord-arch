@@ -47,7 +47,7 @@ There is no floating WhatsApp bubble.
   - Palette is `#FFFFFF` / `#0B0B0C` / `#6B6E72` / `#E4E6E8`, with **no accent colour**. Colour comes only from the photos.
   - Radius 0 and no shadows.
   - No gradient, scrim or text-shadow over photos.
-- **Type:** Michroma 400 for display, nav, labels and manifesto; Aktiv Grotesk 400/500 for body. Uppercase with tracking only in the wordmark and the hero letters.
+- **Type:** Michroma 400 for the wordmark and project names; Newsreader 400/500 for the manifesto and concept; Aktiv Grotesk 400/500 for body, nav and labels. Uppercase with tracking only in the wordmark (DEC-032).
 - **Logo angle:** the 33.7° roof diagonal of the logo is the only non-orthogonal form, used in reveals, page wipes and the tear.
 - **Accessibility:** WCAG AA, and every effect honours `prefers-reduced-motion`.
 - **Performance:**

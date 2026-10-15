@@ -1,4 +1,4 @@
-import { forwardRef, type CSSProperties, type ImgHTMLAttributes } from 'react'
+import { forwardRef, useState, type CSSProperties, type ImgHTMLAttributes, type ReactEventHandler } from 'react'
 import type { Img } from '@/content/projects'
 
 export const srcSet = (img: Pick<Img, 'src' | 'widths'>, ext: 'avif' | 'webp') =>
@@ -18,15 +18,21 @@ type Props = {
   imgClassName?: string
   style?: CSSProperties
   imgStyle?: CSSProperties
-} & Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'srcSet' | 'sizes' | 'alt' | 'style'>
+  onLoad?: ReactEventHandler<HTMLImageElement>
+  onError?: ReactEventHandler<HTMLImageElement>
+} & Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'srcSet' | 'sizes' | 'alt' | 'style' | 'onLoad' | 'onError'>
 
-/** Manifest-driven <picture>: AVIF + WebP, intrinsic size from the manifest (no CLS). */
+/**
+ * Manifest-driven picture. Width and height come from the manifest, so a missing file
+ * still reserves the box (neutral fill, no layout shift). Real files use the same paths.
+ */
 export const Picture = forwardRef<HTMLImageElement, Props>(function Picture(
-  { img, sizes, priority, alt, className, imgClassName, style, imgStyle, ...rest },
+  { img, sizes, priority, alt, className, imgClassName, style, imgStyle, onLoad, onError, ...rest },
   ref,
 ) {
+  const [missing, setMissing] = useState(false)
   return (
-    <picture className={className} style={style}>
+    <picture className={`frame${missing ? ' is-missing' : ''}${className ? ` ${className}` : ''}`} style={style}>
       <source type="image/avif" srcSet={srcSet(img, 'avif')} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet(img, 'webp')} sizes={sizes} />
       <img
@@ -41,6 +47,11 @@ export const Picture = forwardRef<HTMLImageElement, Props>(function Picture(
         className={imgClassName}
         style={imgStyle}
         draggable={false}
+        onLoad={onLoad}
+        onError={(e) => {
+          setMissing(true)
+          onError?.(e)
+        }}
         {...rest}
       />
     </picture>
