@@ -25,7 +25,7 @@ export function Places() {
           {fine && (
             <div className="mt-10 hidden lg:block" aria-hidden="true">
               <Picture key={current.slug} img={cardOf(current)} sizes="40vw" alt="" imgClassName="places-img aspect-[4/5] w-full object-cover" />
-              <p className="t-label mt-3 text-muted">{current.code} · {current.name}</p>
+              <p className="t-label mt-3 text-muted">{current.name}</p>
             </div>
           )}
         </div>
@@ -47,7 +47,7 @@ export function Places() {
                         {p.place === p.city ? p.city : `${p.place}, ${p.city}`}
                       </span>
                       <span className="t-caption text-muted sm:text-right">
-                        {p.name} <span className="t-label ml-2">{p.code}</span>
+                        {p.name}
                       </span>
                     </ProjectLink>
                   </li>

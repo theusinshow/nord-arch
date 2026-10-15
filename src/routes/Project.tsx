@@ -44,7 +44,7 @@ export default function Project() {
 
   return (
     <article>
-      <div className="relative mt-[76px] h-[calc(92svh-76px)] min-h-[420px] overflow-hidden bg-border">
+      <div className="relative mt-[73px] h-[calc(92svh-73px)] min-h-[420px] overflow-hidden bg-border">
         <Picture
           img={openingOf(p)}
           sizes="100vw"

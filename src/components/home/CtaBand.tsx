@@ -1,5 +1,4 @@
 import { home } from '@/content/site'
-import { waLink } from '@/lib/whatsapp'
 import { cn } from '@/lib/cn'
 
 type Props = {
@@ -45,8 +44,4 @@ export function CtaBand({ title, line, href, button = home.ctaButton, id = 'conv
       <div className="wrap grid-12 items-end gap-y-10 py-[var(--sec-m)]">{body}</div>
     </section>
   )
-}
-
-export function HomeCta() {
-  return <CtaBand title={home.invitation} line={home.ctaLine} href={waLink('home')} />
 }

@@ -1,14 +1,17 @@
 import { contact } from '@/content/site'
 
-type Variant = 'home' | 'project' | 'contact' | 'nav'
+type Variant = 'project' | 'contact' | 'nav' | 'build' | 'renovate' | 'other'
 
 const MESSAGES: Record<Exclude<Variant, 'project'>, string> = {
   nav: 'Olá, gostaria de conversar sobre um projeto.',
-  home: 'Olá, conheci a Nord Arch e tenho um terreno em ___. Podemos conversar?',
-  contact: 'Olá! Terreno em: ___ · Programa: ___ · Projeto de referência: ___',
+  contact: 'Olá! Cidade: ___ · Tipo de projeto: ___ · Projeto de referência: ___',
+  // Home closing — three starting points (DEC-029)
+  build: 'Olá, tenho um terreno em ___ e gostaria de conversar sobre o projeto de uma casa.',
+  renovate: 'Olá, gostaria de conversar sobre a reforma e os interiores de um imóvel em ___.',
+  other: 'Olá, gostaria de conversar sobre um projeto de paisagismo ou um espaço comercial em ___.',
 }
 
-/** Single source for every WhatsApp message (DEC-017, CNT-011). */
+/** Single source for every WhatsApp message (DEC-017, DEC-029, CNT-011). */
 export function waMessage(variant: Variant, project?: { name: string; code: string }) {
   if (variant === 'project' && project) return `Olá, vi a ${project.name} (${project.code}) e gostaria de conversar sobre um projeto.`
   return MESSAGES[variant === 'project' ? 'nav' : variant]

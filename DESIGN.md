@@ -95,7 +95,7 @@ Declared deviations from the scale: 11 px, 13 px and the clamp end-points.
 - **Filter:** text tabs (Todas · Residencial · Interiores · Paisagismo · Comercial). The active tab is underlined. No chips or pills.
 - **Ficha técnica:** a key/value list. Michroma 11 px keys, Aktiv values, a hairline under each row.
 - **Tear Ticket:** one component with variants `home`, `project` and `contact` (see PAGE_BLUEPRINTS). White fill, 1 px ink border, dashed perforation, radius 0.
-- **Accordion Gallery, Drift Wall, Tilted Card:** React Bits components, fully rethemed (see MOTION_DIRECTION).
+- **Accordion Gallery, Drift Wall, Tilted Card, Flex Carousel:** React Bits components, fully rethemed (see MOTION_DIRECTION; Flex Carousel = Studio "Obras", DEC-031).
 
 ## Elevation
 
@@ -120,6 +120,7 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 5. Jumps of up to 280 px between sections, to create pauses.
 6. **Black blocks, used sparingly**, to highlight a CTA: an ink section (`#0B0B0C`) with white type and a white rectangular button (radius 0) that inverts on hover. One per page at most (DEC-025).
 7. Greyscale photos at rest in the Home highlights, regaining colour on hover/focus (DEC-025).
+8. The **roof cut**: photos clipped by the monogram's shed, high on the left and falling 33.7° to the right (`.roof-cut`). Used in the Home intro and the closing band (DEC-028).
 
 **Proíbe**
 1. Any chromatic accent, including WhatsApp green.
@@ -131,7 +132,7 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 ## Anti-slop — exceções deliberadas
 
 - T5 (peso único): Michroma only exists in 400. Hierarchy comes from size, space and the contrast with Aktiv. This is accepted because the extended, single-weight face echoes the logo's uniform monoline stroke.
-- T9 (caixa-alta + tracking): only in the "NORD ARCH" wordmark and the hero letters/labels ("N O R D / A R C H", "SANTA CATARINA"). These are the brand mark, 4 letters per row and never a sentence. Everywhere else, sentence case.
+- T9 (caixa-alta + tracking): in the "NORD ARCH" wordmark, the hero letters/labels ("N O R D / A R C H", "SANTA CATARINA") and, at the developer's request, the navbar and its menu panel (DEC-030, a 1:1 of flexis-mobility.com). Everywhere else, sentence case.
 - U-branco (branco puro #FFFFFF em vez de off-white): the developer's call. A pure white wall keeps the photos' colour uncontaminated, like a gallery white cube. Mitigation: neutral-cool greys that do not fight the warm timber in the photos.
 - U11 (retratos gerados) — **condicional**: só se CNT-007 escolher a opção A (retratos gerados por IA de equipe fictícia). Nesse caso os retratos ficam rotulados como fictícios em `/creditos` e a legenda de cada pessoa cita os projetos NA—NN que conduziu. Com a opção B (placeholder de monograma), a exceção cai.
 

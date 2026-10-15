@@ -34,6 +34,9 @@
 | DEC-025 | 2026-10-12 | Home revision: Lugares replaces Drift Wall; B&W closed highlights; black CTA band with standard button | ativa |
 | DEC-026 | 2026-10-12 | Official monogram SVG adopted (CNT-001 closed) | ativa |
 | DEC-027 | 2026-10-12 | Tear Ticket removed everywhere → black CTA block + standard button | ativa |
+| DEC-028 | 2026-10-12 | Home: studio intro, codes out of Lugares, "12 obras" link removed, typographic closing band, lockup centred | parcialmente superada por DEC-029 |
+| DEC-029 | 2026-10-12 | Lockup optical centre; "projeto" not "casa"; closing = three starting points | ativa |
+| DEC-030 | 2026-10-12 | Home Sobre + Serviços sections; full copy pass (copywriting skill); navbar refactored after flexis-mobility.com | ativa |
 
 Status: `ativa` · `superada por DEC-XXX` · `revertida`
 
@@ -421,6 +424,120 @@ The mark is applied in `<Monogram>` (header, footer, preloader draw, wipe, 404),
 - DEC-017 entirely.
 - The Tear Ticket part of DEC-009, DEC-008 (tear angle) and DEC-022 (spring-back exception).
 
+**Reversível:** sim
+
+## DEC-028 — Home refinements, second review
+**Data:** 2026-10-12 · **Etapa:** refinamento (feedback do desenvolvedor no navegador)
+
+**Decisão:**
+1. **Lockup:** the wordmark box is trimmed to cap height (`text-box: trim-both cap alphabetic`), so the monogram centre and the text centre coincide. Measured at 34.2 px for both.
+2. **Manifesto section → studio intro** (feedback: "muito vazia, zero sentido"):
+   - the manifesto;
+   - a fictional studio paragraph (Florianópolis; project to construction; architecture, interiors and landscape in one team);
+   - the scope list;
+   - a link to `/estudio`;
+   - a 4:5 photo (Steppe House) cut by the monogram's shed roof, 33.7° falling to the right (`.roof-cut`, slope via `66.7cqw`).
+3. **Lugares:** the NA—NN codes were removed; only the project name remains.
+4. **"12 obras · NA—01 → NA—12" link removed.**
+5. **Closing band redesigned** (feedback: "ser criativo, tá muito básico"):
+   - The WhatsApp message itself is the headline: “Olá, tenho um terreno em ___.”
+   - The blank cycles through the cities of the twelve works (2.4 s, fade and rise reveal; static under reduced motion).
+   - A photo on the right (Firn House) is cut by the same roof diagonal.
+   - The standard white button is kept.
+
+**Why:** Developer review of the running site.
+**Affects:** `components/home/{Intro,Closing,Places}.tsx`, `routes/Home.tsx`, `content/site.ts`, `styles/index.css`, `CtaBand.tsx` (the `HomeCta` export was removed; Project and Contato still use `CtaBand`).
+**Reversível:** sim
+
+## DEC-029 — Optical lockup, wider scope in copy, closing as three starting points
+**Data:** 2026-10-12 · **Etapa:** refinamento (feedback do desenvolvedor)
+
+**Decisão:**
+1. **Lockup:** the wordmark (cap-height box) is nudged down `.16em` to the monogram's **optical centre**. The stroke-mass centroid sits 21.8 of 348 units below the box centre, about 2.3 px at the 36 px header size. Feedback: "parece que a letra está mais acima."
+2. **Scope in copy** (feedback: "é só casa que a Nord faz?"):
+   - Manifesto: "Cada **projeto** nasce do lugar onde vai ficar."
+   - The intro paragraph now lists houses, interiors, gardens and commercial spaces.
+3. **Closing band** (feedback: "é realmente essa abordagem que o usuário tem para o arquiteto?"). The quote with cycling cities is replaced by **"Por onde começamos?"** and three real starting points, each a full-width row that inverts to white on hover:
+
+| Row | Message variant | Pre-filled message |
+|---|---|---|
+| "Tenho um terreno e quero construir" | `build` | "…tenho um terreno em ___ e gostaria de conversar sobre o projeto de uma casa." |
+| "Quero reformar ou fazer os interiores" | `renovate` | "…a reforma e os interiores de um imóvel em ___." |
+| "Paisagismo ou espaço comercial" | `other` | "…um projeto de paisagismo ou um espaço comercial em ___." |
+
+The roof-cut photo is kept. The `home` message variant was removed, and the Contato message no longer assumes a plot.
+
+**Why:**
+- Not every visitor has a plot.
+- The studio is full-service.
+- A first contact for this audience is a qualified conversation, not a casual line.
+
+**Affects:** `lib/whatsapp.ts`, `components/home/Closing.tsx`, `content/site.ts`, `styles/index.css`.
+**Reversível:** sim
+
+## DEC-030 — Sobre and Serviços sections, copy pass, Flexis-style navbar
+**Data:** 2026-10-12 · **Etapa:** refinamento (pedidos do desenvolvedor)
+
+**Decisão:**
+
+1. **Sections on the home, not pages.** The developer specified "página não, uma section".
+   - **"Sobre"** is the refined intro. Manifesto: "Primeiro o lugar. Depois o projeto." Two short paragraphs, a link to `/estudio`, and a roof-cut photo.
+   - **"Serviços"** comes right after it, with four services in hairline columns. Each column points to one project that shows it:
+
+| Service | Example project |
+|---|---|
+| Arquitetura | Pleat House |
+| Interiores | Celeiro Testo Alto |
+| Paisagismo | Mound Pavilion |
+| Acompanhamento de obra | Casa Pedra Furada |
+
+   - Below the columns, **"Como trabalhamos"** lists five steps: Conversa · Visita · Estudo · Projeto · Obra.
+   - The section is reachable at `/#servicos`.
+
+2. **Copy pass with the `copywriting` skill.** Removed generic and house-only lines, and kept facts concrete and fictional (DEC-011). Changes:
+   - meta description;
+   - Lugares title ("Doze lugares, do litoral à serra.");
+   - closing line;
+   - project and contact CTA lines;
+   - studio manifesto and "Luz" text;
+   - contact intro.
+
+   Project concepts were reviewed and kept, because they contain no AI tells.
+
+3. **Navbar refactored as a structural 1:1 of flexis-mobility.com**, at the developer's request ("idêntica").
+   - **Layout:** a 73 px bar of cells divided by 15% hairlines (`box-shadow`). Cells: logo, a centred "MENU ≡" toggle, "WHATSAPP" and "CONTATO •".
+   - **Background:** transparent over the hero and solid ink when scrolled.
+   - **Hover:** bracket-corner clip-path on each cell, and character-shuffle labels on load and hover.
+   - **Scroll progress:** a 1 px line across the bar.
+   - **Menu panel:** drops from the top (`translate`, 0.6 s) over a 75% black scrim. It holds a photo that swaps per hovered link, large uppercase links with a dot-on-hover, and side buttons ("Por onde começamos?", Instagram, E-mail). Mobile adds a WhatsApp / Contato footer.
+   - **Adaptations:** Flexis' green accent becomes white (there is no accent colour), and Geist Mono becomes Michroma (the only display face).
+
+**Anti-slop exception:** T9 (uppercase + tracking) is extended to the navbar and its menu, on the developer's explicit request. It is declared in `DESIGN.md`.
+
+**Bug fixed along the way:** `WipeLink` and `ProjectLink` now compose a caller's `onClick`. Before, it replaced the navigation handler and caused full page reloads.
+
+**Affects:** `components/layout/{Header,Shuffle,Site}.tsx`, `components/home/{Intro,Services}.tsx`, `content/site.ts`, `styles/index.css`, the 73 px header offset in the routes.
+**Reversível:** sim
+
+## DEC-031 — Flex Carousel ("Obras") on the Studio page
+**Data:** 2026-10-14 · **Etapa:** refinamento (pedido do desenvolvedor)
+
+**Decisão:** React Bits' Flex Carousel (WebGL lens over the cards, `ogl`) is added to `/estudio` as a section called **"Obras"**. It sits between Escopo and Equipe and shows all 12 projects.
+
+- **Why there:** the home already has its signature gallery (the Accordion highlights). Before this, the Studio page showed only three works, through Linguagem.
+- **Retheme:**
+  - preset `arch` with radius 0;
+  - captions below the card (name in `t-h3`, code · place · year in `t-caption`, counter in `t-label`), never over the photo;
+  - focus is the 2 px ink outline;
+  - labels are in pt-BR;
+  - dispersion is lowered to 0.15;
+  - on mobile, cards switch to portrait so the lens does not warp a full-width card.
+- **No scroll-jacking:** `captureWheel={false}`, so the page wheel scrolls normally. Drag, arrow keys and click-to-zoom still work.
+- **Link:** a text link under the carousel opens the active project.
+- **Loading:** lazy-loaded on approach, like Highlights (DEC-019).
+- **Motion exception:** the lens bends the cards in curves during drag and settle. This is a declared exception to "the 33.7° diagonal is the only non-orthogonal form": it applies only while moving, and the cards rest flat.
+
+**Affects:** `components/reactbits/FlexCarousel.tsx`, `components/motion/Works.tsx`, `routes/Studio.tsx`, `package.json` (`ogl`).
 **Reversível:** sim
 
 ---

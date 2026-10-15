@@ -1,9 +1,10 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Hero } from '@/components/hero/Hero'
 import { Places } from '@/components/home/Places'
-import { HomeCta } from '@/components/home/CtaBand'
+import { Intro } from '@/components/home/Intro'
+import { Services } from '@/components/home/Services'
+import { Closing } from '@/components/home/Closing'
 import { SectionLabel } from '@/components/ui/Parts'
-import { WipeLink } from '@/components/layout/Site'
 import { projects } from '@/content/projects'
 import { home } from '@/content/site'
 import { usePageMeta } from '@/lib/hooks'
@@ -18,7 +19,7 @@ function HighlightsFallback({ count }: { count: number }) {
 export default function Home() {
   usePageMeta(
     'Nord Arch — Arquitetura residencial em Santa Catarina',
-    'Casas autorais em Santa Catarina: arquitetura, interiores e paisagismo, do projeto à obra.',
+    'Escritório de arquitetura em Florianópolis. Casas, interiores, paisagismo e espaços comerciais em Santa Catarina, do estudo à obra.',
   )
   const featured = projects.filter((p) => p.featured)
   const near = useRef<HTMLDivElement>(null)
@@ -36,11 +37,9 @@ export default function Home() {
     <>
       <Hero project={projects[0]} />
 
-      <section className="wrap mt-[var(--sec-l)]" aria-label="Manifesto">
-        <div className="grid-12">
-          <p className="t-manifesto col-span-4 sm:col-span-6 lg:col-span-7">{home.manifesto}</p>
-        </div>
-      </section>
+      <Intro />
+
+      <Services />
 
       <Places />
 
@@ -55,14 +54,9 @@ export default function Home() {
         ) : (
           <HighlightsFallback count={featured.length} />
         )}
-        <p className="mt-[var(--sec-s)]">
-          <WipeLink to="/projetos" className="t-nav link">
-            {projects.length} obras · NA—01 → NA—{String(projects.length).padStart(2, '0')}
-          </WipeLink>
-        </p>
       </section>
 
-      <HomeCta />
+      <Closing />
     </>
   )
 }

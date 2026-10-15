@@ -7,7 +7,7 @@ import { usePageMeta } from '@/lib/hooks'
 export function Contact() {
   usePageMeta('Contato — Nord Arch', 'Converse com a Nord Arch pelo WhatsApp sobre o seu terreno e o seu programa.')
   return (
-    <div className="wrap pt-[calc(76px+var(--sec-m))]">
+    <div className="wrap pt-[calc(73px+var(--sec-m))]">
       <div className="grid-12 items-start gap-y-12">
         <div className="col-span-4 sm:col-span-8 lg:col-span-5">
           <h1 className="t-h1">Contato</h1>
@@ -29,7 +29,7 @@ export function Contact() {
 export function Credits() {
   usePageMeta('Créditos — Nord Arch', 'Créditos das obras, fotografias e ferramentas usadas neste estudo conceitual.')
   return (
-    <div className="wrap pt-[calc(76px+var(--sec-m))]">
+    <div className="wrap pt-[calc(73px+var(--sec-m))]">
       <h1 className="t-h1">Créditos</h1>
       <p className="t-body mt-6">{credits.notice}</p>
       <div className="mt-[var(--sec-m)] overflow-x-auto">
@@ -64,7 +64,7 @@ export function Credits() {
 export function Privacy() {
   usePageMeta('Privacidade — Nord Arch', 'Este estudo não usa cookies, rastreamento nem formulários.')
   return (
-    <div className="wrap pt-[calc(76px+var(--sec-m))]">
+    <div className="wrap pt-[calc(73px+var(--sec-m))]">
       <h1 className="t-h1">Privacidade</h1>
       <div className="mt-8 flex flex-col gap-4">
         {privacy.map((p) => (

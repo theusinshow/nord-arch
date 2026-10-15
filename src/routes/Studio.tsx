@@ -1,3 +1,4 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { ProjectLink, WipeLink } from '@/components/layout/Site'
 import { Picture } from '@/components/ui/Picture'
 import { Ficha, SectionLabel } from '@/components/ui/Parts'
@@ -8,12 +9,27 @@ import { studio } from '@/content/site'
 import { usePageMeta } from '@/lib/hooks'
 import { cn } from '@/lib/cn'
 
+// Flex Carousel pulls ogl/WebGL — imported only when the section approaches (DEC-019, DEC-031)
+const Works = lazy(() => import('@/components/motion/Works'))
+const worksFallback = <div className="h-[min(70svh,720px)] min-h-[440px]" aria-hidden="true" />
+
 const codesFor = (s: Scope) => projects.filter((p) => p.scope.includes(s)).map((p) => p.code).join(' · ')
 
 export default function Studio() {
-  usePageMeta('Estúdio — Nord Arch', 'Linguagem, escopo e equipe da Nord Arch: casas que nascem do lugar, do projeto à obra.')
+  usePageMeta('Estúdio — Nord Arch', 'Linguagem, escopo e equipe da Nord Arch, escritório de arquitetura em Florianópolis.')
+  const near = useRef<HTMLElement>(null)
+  const [load, setLoad] = useState(false)
+
+  useEffect(() => {
+    const el = near.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => e.isIntersecting && setLoad(true), { rootMargin: '600px 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <div className="wrap pt-[calc(76px+var(--sec-m))]">
+    <div className="wrap pt-[calc(73px+var(--sec-m))]">
       <h1 className="t-label text-muted">Estúdio</h1>
       <div className="mt-8 flex flex-col gap-4">
         {studio.manifesto.map((s) => (
@@ -57,6 +73,11 @@ export default function Studio() {
             rows={(['arquitetura', 'interiores', 'paisagismo', 'obra'] as Scope[]).map((s) => [scopeLabel[s], codesFor(s)])}
           />
         </div>
+      </section>
+
+      <section ref={near} className="mt-[var(--sec-m)]" aria-labelledby="obras">
+        <SectionLabel id="obras" aside={`${projects.length} projetos`}>Obras</SectionLabel>
+        {load ? <Suspense fallback={worksFallback}><Works items={projects} /></Suspense> : worksFallback}
       </section>
 
       <section className="mt-[var(--sec-l)]" aria-labelledby="equipe">

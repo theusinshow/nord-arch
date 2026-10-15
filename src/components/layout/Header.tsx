@@ -1,82 +1,135 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
-import { Lockup } from '@/components/brand/Monogram'
+import { Monogram } from '@/components/brand/Monogram'
+import { Picture } from '@/components/ui/Picture'
+import { bySlug, cardOf } from '@/content/projects'
+import { contact } from '@/content/site'
 import { waLink } from '@/lib/whatsapp'
 import { cn } from '@/lib/cn'
+import { Shuffle } from './Shuffle'
 import { useSite, WipeLink } from './Site'
 
-const NAV = [
-  { to: '/projetos', label: 'Projetos' },
-  { to: '/estudio', label: 'Estúdio' },
+// Menu entries — the photo on the left swaps with the hovered link
+const LINKS = [
+  { to: '/projetos', label: 'Projetos', image: 'pleat-house' },
+  { to: '/estudio', label: 'Estúdio', image: 'firn-house' },
+  { to: '/#servicos', label: 'Serviços', image: 'celeiro-testo-alto' },
+  { to: '/contato', label: 'Contato', image: 'casas-ferrugem' },
 ]
 
+/**
+ * Navbar (DEC-030) — a 1:1 structural refactor of flexis-mobility.com's header, in Nord Arch tokens:
+ * cells divided by hairlines (logo | MENU toggle | WhatsApp | Contato •), transparent over the hero and
+ * solid ink once scrolled, bracket-corner hover on every cell, shuffling labels, a 1px scroll-progress line
+ * and a menu panel that drops from the top (photo + large links + side buttons) over a dimmed page.
+ */
 export function Header() {
   const { headerLight } = useSite()
   const { pathname } = useLocation()
   const [open, setOpen] = useState(false)
+  const [image, setImage] = useState(LINKS[0].image)
+  const [hover, setHover] = useState<Record<string, number>>({})
+  const [progress, setProgress] = useState(0)
+
+  const bump = (k: string) => setHover((h) => ({ ...h, [k]: (h[k] ?? 0) + 1 }))
 
   useEffect(() => setOpen(false), [pathname])
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
     const esc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
     window.addEventListener('keydown', esc)
     return () => window.removeEventListener('keydown', esc)
-  }, [open])
+  }, [])
+  useEffect(() => {
+    let raf = 0
+    const on = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight
+        setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0)
+      })
+    }
+    on()
+    window.addEventListener('scroll', on, { passive: true })
+    window.addEventListener('resize', on)
+    return () => {
+      window.removeEventListener('scroll', on)
+      window.removeEventListener('resize', on)
+    }
+  }, [pathname])
 
-  const light = headerLight && !open
-  const current = (to: string) => (pathname.startsWith(to) ? 'page' : undefined)
+  const solid = open || !headerLight
+  const img = bySlug(image)!
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-40 transition-colors duration-[var(--dur-ui)] ease-[var(--ease-out)]',
-        light ? 'text-white on-photo' : 'bg-bg text-text',
-      )}
-    >
-      <div className="wrap flex h-[76px] items-center justify-between">
-        <WipeLink to="/" aria-label="Nord Arch — início" className="-m-2 p-2">
-          <Lockup />
-        </WipeLink>
+    <header className={cn('nav', solid && 'is-solid', open && 'is-open')} onClick={(e) => e.target === e.currentTarget && setOpen(false)}>
+      <WipeLink to="/" className="nav-cell nav-logo" aria-label="Nord Arch — início" onMouseEnter={() => bump('logo')}>
+        <span className="inline-flex items-center gap-3">
+          <Monogram className="h-9 w-7" />
+          <Shuffle text="Nord Arch" trigger={hover.logo} className="t-wordmark whitespace-nowrap" />
+        </span>
+      </WipeLink>
 
-        <nav aria-label="Principal" className="hidden items-center gap-8 sm:flex">
-          {NAV.map((n) => (
-            <WipeLink key={n.to} to={n.to} className="t-nav link py-3" aria-current={current(n.to)}>
-              {n.label}
-            </WipeLink>
-          ))}
-          <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="t-nav link py-3">
-            WhatsApp
-          </a>
-        </nav>
+      <nav aria-label="Menu principal" className="nav-cell-wrap nav-main" style={{ ['--scroll-progress' as string]: progress }}>
+        <button
+          type="button"
+          className="nav-cell nav-toggle"
+          aria-expanded={open}
+          aria-controls="nav-panel"
+          onClick={() => setOpen((v) => !v)}
+          onMouseEnter={() => bump('menu')}
+        >
+          <Shuffle text={open ? 'Fechar' : 'Menu'} trigger={hover.menu} className="nav-label" />
+          <span className="nav-icon" aria-hidden="true" />
+        </button>
 
-        <div className="flex items-center gap-5 sm:hidden">
-          <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="t-nav hidden py-3 min-[400px]:inline">
-            WhatsApp
-          </a>
-          <button type="button" className="t-nav min-h-11 py-3" aria-expanded={open} aria-controls="menu" onClick={() => setOpen((v) => !v)}>
-            {open ? 'Fechar' : 'Menu'}
-          </button>
-        </div>
-      </div>
-
-      {open && (
-        <nav id="menu" aria-label="Menu" className="fixed inset-0 top-[76px] z-30 bg-bg text-text">
-          <ul className="wrap flex flex-col gap-6 pt-12">
-            {[...NAV, { to: '/contato', label: 'Contato' }].map((n) => (
-              <li key={n.to}>
-                <WipeLink to={n.to} className="t-h2 link" aria-current={current(n.to)}>
-                  {n.label}
-                </WipeLink>
+        <div id="nav-panel" className="nav-panel" role="dialog" aria-modal="true" aria-label="Menu" inert={!open}>
+          <div className="nav-panel-image">
+            <Picture key={img.slug} img={cardOf(img)} sizes="20rem" alt="" imgClassName="nav-panel-img h-full w-full object-cover" />
+          </div>
+          <div className="nav-panel-body">
+            <ul className="nav-panel-list">
+              {LINKS.map((l) => (
+                <li key={l.to}>
+                  <WipeLink to={l.to} className="nav-panel-link" onMouseEnter={() => setImage(l.image)} onFocus={() => setImage(l.image)} onClick={() => setOpen(false)}>
+                    <span className="nav-panel-link-label">{l.label}</span>
+                  </WipeLink>
+                </li>
+              ))}
+            </ul>
+            <ul className="nav-panel-list nav-panel-side">
+              <li>
+                <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="nav-button">
+                  <span>Por onde começamos?</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
               </li>
-            ))}
-            <li>
-              <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="t-h2 link">
-                WhatsApp
-              </a>
-            </li>
-          </ul>
-        </nav>
-      )}
+              <li>
+                <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="nav-button">
+                  <span>Instagram</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${contact.email}`} className="nav-button">
+                  <span>E-mail</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            </ul>
+            <div className="nav-panel-footer">
+              <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="nav-cell">WhatsApp</a>
+              <WipeLink to="/contato" className="nav-cell nav-contact" onClick={() => setOpen(false)}>Contato</WipeLink>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="nav-cell nav-side" onMouseEnter={() => bump('wa')}>
+        <Shuffle text="WhatsApp" trigger={hover.wa} className="nav-label" />
+      </a>
+      <WipeLink to="/contato" className="nav-cell nav-side nav-contact" onMouseEnter={() => bump('ct')}>
+        <Shuffle text="Contato" trigger={hover.ct} className="nav-label" />
+      </WipeLink>
     </header>
   )
 }

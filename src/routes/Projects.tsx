@@ -25,7 +25,7 @@ export default function Projects() {
   }
 
   return (
-    <div className="wrap pt-[calc(76px+var(--sec-m))]">
+    <div className="wrap pt-[calc(73px+var(--sec-m))]">
       <div className="flex items-baseline justify-between gap-6">
         <h1 className="t-h1">Projetos</h1>
         <span className="t-label text-muted">{list.length}</span>

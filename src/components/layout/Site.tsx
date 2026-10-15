@@ -36,19 +36,32 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   const busy = useRef(false)
 
   const go = useCallback(
-    async (to: string) => {
+    async (target: string) => {
+      const [to, hash] = target.split('#')
       const wipe = wipeRef.current
+      // same page + anchor (e.g. /#servicos from the home): just scroll there
+      if (hash && (to || '/') === window.location.pathname) {
+        document.getElementById(hash)?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' })
+        return
+      }
+      // the router's ScrollRestoration runs after navigation; land again once it has settled
+      const land = () => {
+        const to = () => (hash ? document.getElementById(hash)?.scrollIntoView() : window.scrollTo(0, 0))
+        to()
+        if (hash) [80, 300].forEach((ms) => setTimeout(to, ms))
+      }
       if (busy.current) return
       if (!wipe || prefersReducedMotion()) {
-        await navigate(to)
-        window.scrollTo(0, 0)
+        await navigate(to || '/')
+        requestAnimationFrame(land)
         return
       }
       busy.current = true
       wipe.dataset.state = 'in'
       await wait(WIPE_MS)
-      await navigate(to)
-      window.scrollTo(0, 0)
+      await navigate(to || '/')
+      await new Promise((r) => requestAnimationFrame(r))
+      land()
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
       wipe.dataset.state = 'out'
       await wait(WIPE_MS)
@@ -93,12 +106,14 @@ export function SiteProvider({ children }: { children: ReactNode }) {
 }
 
 /** Internal link that navigates with the diagonal wipe (keeps modifier-click behaviour). */
-export function WipeLink({ to, className, children, ...rest }: { to: string; className?: string; children: ReactNode } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>) {
+export function WipeLink({ to, className, children, onClick: onClickProp, ...rest }: { to: string; className?: string; children: ReactNode } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>) {
   const { go } = useSite()
+  // compose: a caller's onClick (e.g. closing the menu) must not replace the wipe navigation
   const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    onClickProp?.(e)
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
     e.preventDefault()
-    if (to === window.location.pathname + window.location.search) {
+    if (!to.includes('#') && to === window.location.pathname + window.location.search) {
       window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
       return
     }
@@ -112,9 +127,10 @@ export function WipeLink({ to, className, children, ...rest }: { to: string; cla
 }
 
 /** Link into a project: the image inside it becomes the shared element. */
-export function ProjectLink({ slug, className, children, ...rest }: { slug: string; className?: string; children: ReactNode } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>) {
+export function ProjectLink({ slug, className, children, onClick: onClickProp, ...rest }: { slug: string; className?: string; children: ReactNode } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>) {
   const { openProject } = useSite()
   const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    onClickProp?.(e)
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
     e.preventDefault()
     openProject(slug, e.currentTarget.querySelector('img'))
