@@ -26,6 +26,8 @@ export function Hero({ project }: { project: Project }) {
   const [decoded, setDecoded] = useState(false)
   const [pos, setPos] = useState('50% 100%')
   const [rowTop, setRowTop] = useState<number | null>(null)
+  const [rowK, setRowK] = useState(1)
+  const rowKRef = useRef(1)
 
   // framing: keep the roof at ROOF_AT of the viewport for any aspect ratio
   useLayoutEffect(() => {
@@ -37,10 +39,15 @@ export function Hero({ project }: { project: Project }) {
       const s = Math.max(vw / h.photo.w, vh / h.photo.h)
       const off = Math.min(0, Math.max(vh - h.photo.h * s, ROOF_AT * vh - h.roofLine * h.photo.h * s))
       setPos(`50% ${off.toFixed(1)}px`)
-      // the NORD row always dips ~28% of its height behind the roof, whatever the framing allowed
+      // the NORD row dips ~14% of its height behind the roof. At 28% the tall volume hid the leg of the R and the
+      // word read "NOPD" (DEC-033). When the roof sits high (e.g. 1440×900) the row cannot rise past the header,
+      // so it scales down until only that 14% is behind the roof.
       const roofPx = off + h.roofLine * h.photo.h * s
-      const rowH = top.current?.offsetHeight ?? 0
-      setRowTop(Math.max(92, roofPx - rowH * 0.72))
+      const natural = (top.current?.offsetHeight ?? 0) / rowKRef.current
+      const k = natural ? Math.max(0.7, Math.min(1, (roofPx - 92) / (natural * 0.86))) : 1
+      rowKRef.current = k
+      setRowK(k)
+      setRowTop(Math.max(92, roofPx - natural * k * 0.86))
     }
     frame()
     void document.fonts?.ready.then(frame) // row height changes once Michroma swaps in
@@ -99,7 +106,7 @@ export function Hero({ project }: { project: Project }) {
       </div>
 
       <h1 className="sr-only">Nord Arch — arquitetura residencial em Santa Catarina</h1>
-      <div ref={top} className="hero-row t-hero absolute inset-x-[var(--margin)] top-[max(96px,11vh)] z-[2] flex items-center justify-between" style={rowTop !== null ? { top: rowTop } : undefined} aria-hidden="true">
+      <div ref={top} className="hero-row t-hero absolute inset-x-[var(--margin)] top-[max(96px,11vh)] z-[2] flex items-center justify-between" style={{ ...(rowTop !== null && { top: rowTop }), ...(rowK < 1 && { fontSize: `calc(clamp(56px, 14vw, 224px) * ${rowK.toFixed(3)})` }) }} aria-hidden="true">
         {letter('N', 0)}
         <span className="t-hero-label hero-label hidden lg:block">{copy.labels[0]}</span>
         {letter('O', 1)}

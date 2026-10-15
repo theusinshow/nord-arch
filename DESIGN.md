@@ -14,7 +14,7 @@
 
 ## Color
 
-Light mode only. There is **no accent colour**: colour comes from the photographs. States are expressed by black↔white inversion, underline and a 2 px ink outline.
+White and ink, nothing between (DEC-032). There is **no accent colour**: colour comes from the photographs. White is the wall wherever a photo is the subject; ink sections (`.ink`, which flips the tokens) set the rhythm between them and close every page. States are expressed by black↔white inversion, underline and a 2 px ink outline.
 
 | Role | Token | Value | Contrast on `--bg` |
 | --- | --- | --- | --- |
@@ -118,7 +118,7 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 3. Underline as the state for text links and the active filter.
 4. Photographs as the only source of colour.
 5. Jumps of up to 280 px between sections, to create pauses.
-6. **Black blocks, used sparingly**, to highlight a CTA: an ink section (`#0B0B0C`) with white type and a white rectangular button (radius 0) that inverts on hover. One per page at most (DEC-025).
+6. **Ink sections in rhythm** (DEC-032, supersedes the one-per-page rule of DEC-025): `.ink` blocks (`#0B0B0C`, white type, muted `#A2A5A9`, hairline white 16%) alternate with white; the footer is always ink. Never two white text-only sections in a row without an ink block or a photo between them. The CTA button stays the white rectangle that inverts on hover.
 7. Greyscale photos at rest in the Home highlights, regaining colour on hover/focus (DEC-025).
 8. The **roof cut**: photos clipped by the monogram's shed, high on the left and falling 33.7° to the right (`.roof-cut`). Used in the Home intro and the closing band (DEC-028).
 
@@ -175,7 +175,6 @@ Full spec in `/docs/ai/MOTION_DIRECTION.md`.
 
   --ease-out: cubic-bezier(.2,.7,.1,1);
   --ease-inout: cubic-bezier(.7,0,.2,1);
-  --ease-spring-back: cubic-bezier(.2,1.4,.3,1);
   --dur-micro: 200ms;
   --dur-ui: 600ms;
   --dur-reveal: 1200ms;

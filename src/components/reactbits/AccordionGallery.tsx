@@ -223,12 +223,11 @@ const AccordionGallery = ({
       ref={rootRef}
       className={`flex ${vertical ? 'flex-col' : 'flex-row'} w-full max-w-full [perspective:1400px] max-[520px]:!flex-col max-[520px]:[perspective:none] ${className}`}
       style={{ gap: `${gap}px`, height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px` }}
-      role="list"
+      role="group"
       onMouseLeave={() => defaultIndex < 0 && setActive(-1)}
       aria-label="Projetos em destaque"
     >
       {items.map((item, i) => {
-        const isActive = i === active;
         const Tag = (item.link ? 'a' : 'div') as 'a';
         return (
           <Tag
@@ -236,7 +235,7 @@ const AccordionGallery = ({
             ref={(el: HTMLElement | null) => {
               panelRefs.current[i] = el;
             }}
-            className="group relative block min-w-0 min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#E4E6E8] no-underline outline-none [transform-style:preserve-3d] [transform-origin:center] focus-visible:[box-shadow:0_0_0_2px_#FFFFFF,0_0_0_4px_#0B0B0C] max-[520px]:min-h-[84px] max-[520px]:!transform-none"
+            className="group relative block min-w-0 min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#16171A] no-underline outline-none [transform-style:preserve-3d] [transform-origin:center] focus-visible:[box-shadow:0_0_0_2px_#FFFFFF,0_0_0_4px_#0B0B0C] max-[520px]:min-h-[84px] max-[520px]:!transform-none"
             style={
               {
                 borderRadius: `${radius}px`,
@@ -249,9 +248,7 @@ const AccordionGallery = ({
             onMouseEnter={() => handleEnter(i)}
             onFocus={() => setActive(i)}
             onKeyDown={e => handleKeyDown(i, e)}
-            role="listitem"
-            tabIndex={0}
-            aria-current={isActive ? 'true' : undefined}
+            tabIndex={item.link ? undefined : 0}
             aria-label={item.label}
           >
             <span className="absolute inset-0 overflow-hidden [border-radius:inherit]">

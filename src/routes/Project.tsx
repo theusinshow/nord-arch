@@ -44,7 +44,8 @@ export default function Project() {
 
   return (
     <article>
-      <div className="relative mt-[73px] h-[calc(92svh-73px)] min-h-[420px] overflow-hidden bg-border">
+      {/* shorter than the viewport so a shared link shows the code and name above the fold (DEC-033) */}
+      <div className="relative mt-[73px] h-[calc(76svh-73px)] min-h-[360px] overflow-hidden bg-border">
         <Picture
           img={openingOf(p)}
           sizes="100vw"
@@ -79,9 +80,9 @@ export default function Project() {
         </div>
       </header>
 
-      <section className="wrap mt-[var(--sec-m)]" aria-label="Conceito">
+      <section className="wrap mt-[var(--sec-s)]" aria-label="Conceito">
         <div className="grid-12">
-          <p className="t-body col-span-4 sm:col-span-7 lg:col-span-6 lg:col-start-2">{p.concept}</p>
+          <p className="t-lead col-span-4 sm:col-span-7 lg:col-span-7 lg:col-start-2">{p.concept}</p>
         </div>
       </section>
 
@@ -97,19 +98,22 @@ export default function Project() {
         </div>
       </section>
 
-      <CtaBand id="conversar" title={cta.project.title(p.name)} line={cta.project.line(p.code)} href={waLink('project', p)} />
+      {/* the page closes on ink: conversation → next project → footer (DEC-032) */}
+      <div className="ink ink-end mt-[var(--sec-l)]">
+        <CtaBand id="conversar" title={cta.project.title(p.name)} line={cta.project.line(p.code)} href={waLink('project', p)} />
 
-      <nav className="wrap mt-[var(--sec-m)]" aria-label="Próximo projeto">
-        <ProjectLink slug={next.slug} className="group grid-12 items-end gap-y-6 border-t border-border pt-4">
-          <span className="col-span-4 sm:col-span-4 lg:col-span-6">
-            <span className="t-label block text-muted">Próximo · {next.code}</span>
-            <span className="t-h2 mt-3 block group-hover:underline group-hover:underline-offset-4">{next.name}</span>
-          </span>
-          <span className="col-span-4 sm:col-span-4 lg:col-span-4 lg:col-start-9">
-            <Picture img={cardOf(next)} sizes="(max-width: 640px) 100vw, 33vw" imgClassName="aspect-[3/2] w-full object-cover" />
-          </span>
-        </ProjectLink>
-      </nav>
+        <nav className="wrap pb-[var(--sec-m)]" aria-label="Próximo projeto">
+          <ProjectLink slug={next.slug} className="group grid-12 items-end gap-y-6 border-t border-border pt-4">
+            <span className="col-span-4 sm:col-span-4 lg:col-span-6">
+              <span className="t-label block text-muted">Próximo · {next.code}</span>
+              <span className="t-h2 mt-3 block group-hover:underline group-hover:underline-offset-4">{next.name}</span>
+            </span>
+            <span className="col-span-4 sm:col-span-4 lg:col-span-4 lg:col-start-9">
+              <Picture img={cardOf(next)} sizes="(max-width: 640px) 100vw, 33vw" imgClassName="aspect-[3/2] w-full object-cover" />
+            </span>
+          </ProjectLink>
+        </nav>
+      </div>
     </article>
   )
 }

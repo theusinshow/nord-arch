@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ProjectLink } from '@/components/layout/Site'
 import { Picture } from '@/components/ui/Picture'
-import { SectionLabel } from '@/components/ui/Parts'
 import { bySlug, cardOf, type Project } from '@/content/projects'
 import { places } from '@/content/site'
 import { useMedia } from '@/lib/hooks'
@@ -17,11 +16,10 @@ export function Places() {
   const [current, setCurrent] = useState<Project>(groups[0].items[0])
 
   return (
-    <section className="wrap mt-[var(--sec-m)]" aria-labelledby="lugares">
-      <SectionLabel id="lugares" aside="Santa Catarina">{places.label}</SectionLabel>
+    <section className="wrap mt-[var(--sec-l)]" aria-labelledby="lugares">
       <div className="grid-12 gap-y-12">
         <div className="col-span-4 sm:col-span-8 lg:col-span-5">
-          <h2 className="t-h2">{places.title}</h2>
+          <h2 id="lugares" className="t-h2">{places.title}</h2>
           {fine && (
             <div className="mt-10 hidden lg:block" aria-hidden="true">
               <Picture key={current.slug} img={cardOf(current)} sizes="40vw" alt="" imgClassName="places-img aspect-[4/5] w-full object-cover" />
@@ -39,10 +37,12 @@ export function Places() {
                   <li key={p.slug}>
                     <ProjectLink
                       slug={p.slug}
-                      className="group grid grid-cols-1 items-baseline gap-x-6 gap-y-1 border-b border-border py-4 sm:grid-cols-[1fr_auto]"
+                      className="group grid grid-cols-[56px_1fr] items-center gap-x-4 gap-y-1 border-b border-border py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-x-6"
                       onPointerEnter={() => setCurrent(p)}
                       onFocus={() => setCurrent(p)}
                     >
+                      {/* touch screens get no hover photo: each place carries its own thumbnail instead */}
+                      <Picture img={cardOf(p)} sizes="56px" alt="" className="row-span-2 block sm:hidden" imgClassName="aspect-[4/5] w-14 object-cover" />
                       <span className={cn('t-h3 group-hover:underline group-hover:underline-offset-4', current.slug === p.slug && fine && 'lg:underline lg:underline-offset-4')}>
                         {p.place === p.city ? p.city : `${p.place}, ${p.city}`}
                       </span>

@@ -5,7 +5,8 @@ const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/<>'
 
 /**
  * Character shuffle (navbar labels, after flexis-mobility.com): random glyphs settle left to right.
- * Runs on mount and whenever `trigger` changes (hover). The real text stays available to assistive tech.
+ * Runs on mount and whenever `trigger` changes (hover). The real text stays available to assistive tech and,
+ * invisible, sizes the label, so the scrambled glyphs never change the cell's width (CLS, DEC-033).
  */
 export function Shuffle({ text, trigger = 0, className }: { text: string; trigger?: number; className?: string }) {
   const [out, setOut] = useState(text)
@@ -39,9 +40,10 @@ export function Shuffle({ text, trigger = 0, className }: { text: string; trigge
   }, [run, trigger])
 
   return (
-    <span className={className}>
+    <span className={`shuffle ${className ?? ''}`}>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true">{out}</span>
+      <span aria-hidden="true" className="shuffle-sizer">{text}</span>
+      <span aria-hidden="true" className="shuffle-out">{out}</span>
     </span>
   )
 }

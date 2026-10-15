@@ -13,15 +13,15 @@ type Props = {
 }
 
 /**
- * The one black block of a page (DEC-025, DEC-027): ink background, white type and a standard
- * rectangular button (radius 0). Replaces every Tear Ticket. Black is used sparingly, only for a CTA.
+ * Black CTA block (DEC-025, DEC-027, DEC-032): ink background, white type and a standard
+ * rectangular button (radius 0). Replaces every Tear Ticket.
  */
 export function CtaBand({ title, line, href, button = home.ctaButton, id = 'convite', variant = 'band', className }: Props) {
   const body = (
     <>
       <div className={variant === 'band' ? 'col-span-4 sm:col-span-8 lg:col-span-7' : ''}>
         <h2 id={id} className="t-h2">{title}</h2>
-        <p className="t-body mt-4 text-white/70">{line}</p>
+        <p className="t-body mt-4 text-muted">{line}</p>
       </div>
       <div className={variant === 'band' ? 'col-span-4 sm:col-span-8 lg:col-span-4 lg:col-start-9 lg:justify-self-end' : 'mt-10'}>
         <a href={href} target="_blank" rel="noopener noreferrer" className="btn-invert">
@@ -34,13 +34,13 @@ export function CtaBand({ title, line, href, button = home.ctaButton, id = 'conv
 
   if (variant === 'panel') {
     return (
-      <section className={cn('cta-band bg-text p-8 text-white sm:p-12', className)} aria-labelledby={id}>
+      <section className={cn('ink p-8 sm:p-12', className)} aria-labelledby={id}>
         {body}
       </section>
     )
   }
   return (
-    <section className={cn('cta-band mt-[var(--sec-l)] bg-text text-white', className)} aria-labelledby={id}>
+    <section className={cn('ink', className)} aria-labelledby={id}>
       <div className="wrap grid-12 items-end gap-y-10 py-[var(--sec-m)]">{body}</div>
     </section>
   )

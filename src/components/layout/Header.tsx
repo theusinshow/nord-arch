@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router'
+import { useEffect, useRef, useState } from 'react'
+import { matchPath, useLocation } from 'react-router'
 import { Monogram } from '@/components/brand/Monogram'
 import { Picture } from '@/components/ui/Picture'
 import { bySlug, cardOf } from '@/content/projects'
@@ -29,23 +29,40 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [image, setImage] = useState(LINKS[0].image)
   const [hover, setHover] = useState<Record<string, number>>({})
-  const [progress, setProgress] = useState(0)
+  const navRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
 
   const bump = (k: string) => setHover((h) => ({ ...h, [k]: (h[k] ?? 0) + 1 }))
+  // on a project page every WhatsApp entry carries the project's name and code (DEC-017, DEC-033)
+  const project = bySlug(matchPath('/projetos/:slug', pathname)?.params.slug)
+  const wa = project ? waLink('project', project) : waLink('nav')
 
   useEffect(() => setOpen(false), [pathname])
   useEffect(() => {
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    const esc = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape' || !open) return
+      setOpen(false)
+      toggleRef.current?.focus()
+    }
     window.addEventListener('keydown', esc)
     return () => window.removeEventListener('keydown', esc)
-  }, [])
+  }, [open])
+  // open menu: the page behind is inert and focus moves to the first link; closing hands focus back to the toggle
+  useEffect(() => {
+    const behind = [document.getElementById('main'), document.querySelector('footer')].filter(Boolean) as HTMLElement[]
+    behind.forEach((el) => (el.inert = open))
+    if (open) requestAnimationFrame(() => panelRef.current?.querySelector<HTMLElement>('a')?.focus())
+    return () => behind.forEach((el) => (el.inert = false))
+  }, [open])
+  // scroll progress written straight to a CSS variable: no React state, no re-render per scroll frame
   useEffect(() => {
     let raf = 0
     const on = () => {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => {
         const max = document.documentElement.scrollHeight - window.innerHeight
-        setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0)
+        navRef.current?.style.setProperty('--scroll-progress', String(max > 0 ? Math.min(1, window.scrollY / max) : 0))
       })
     }
     on()
@@ -69,8 +86,9 @@ export function Header() {
         </span>
       </WipeLink>
 
-      <nav aria-label="Menu principal" className="nav-cell-wrap nav-main" style={{ ['--scroll-progress' as string]: progress }}>
+      <nav ref={navRef} aria-label="Menu principal" className="nav-cell-wrap nav-main">
         <button
+          ref={toggleRef}
           type="button"
           className="nav-cell nav-toggle"
           aria-expanded={open}
@@ -82,7 +100,8 @@ export function Header() {
           <span className="nav-icon" aria-hidden="true" />
         </button>
 
-        <div id="nav-panel" className="nav-panel" role="dialog" aria-modal="true" aria-label="Menu" inert={!open}>
+        {/* a disclosure, not a modal dialog: the page behind goes inert while it is open */}
+        <div ref={panelRef} id="nav-panel" className="nav-panel" inert={!open}>
           <div className="nav-panel-image">
             <Picture key={img.slug} img={cardOf(img)} sizes="20rem" alt="" imgClassName="nav-panel-img h-full w-full object-cover" />
           </div>
@@ -98,8 +117,8 @@ export function Header() {
             </ul>
             <ul className="nav-panel-list nav-panel-side">
               <li>
-                <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="nav-button">
-                  <span>Por onde começamos?</span>
+                <a href={wa} target="_blank" rel="noopener noreferrer" className="nav-button">
+                  <span>WhatsApp</span>
                   <span aria-hidden="true">↗</span>
                 </a>
               </li>
@@ -117,14 +136,14 @@ export function Header() {
               </li>
             </ul>
             <div className="nav-panel-footer">
-              <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="nav-cell">WhatsApp</a>
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="nav-cell">WhatsApp</a>
               <WipeLink to="/contato" className="nav-cell nav-contact" onClick={() => setOpen(false)}>Contato</WipeLink>
             </div>
           </div>
         </div>
       </nav>
 
-      <a href={waLink('nav')} target="_blank" rel="noopener noreferrer" className="nav-cell nav-side" onMouseEnter={() => bump('wa')}>
+      <a href={wa} target="_blank" rel="noopener noreferrer" className="nav-cell nav-side" onMouseEnter={() => bump('wa')}>
         <Shuffle text="WhatsApp" trigger={hover.wa} className="nav-label" />
       </a>
       <WipeLink to="/contato" className="nav-cell nav-side nav-contact" onMouseEnter={() => bump('ct')}>

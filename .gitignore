@@ -13,3 +13,6 @@ public/fonts/Aktiv*
 # third-party photo originals + generated images (Divisare, study only)
 assets-src/
 public/img/
+
+# Impeccable critique snapshots (local)
+.impeccable/

@@ -39,22 +39,25 @@ export default function Home() {
 
       <Intro />
 
-      <Services />
+      {/* the work comes second, right after who the studio is (DEC-033): white → ink → white → ink → white → ink footer */}
+      <section ref={near} className="ink mt-[var(--sec-l)] py-[var(--sec-m)]" aria-labelledby="destaques">
+        <div className="wrap">
+          <SectionLabel id="destaques" aside={`${featured.length} de ${projects.length}`}>
+            {home.highlightsLabel}
+          </SectionLabel>
+          {load ? (
+            <Suspense fallback={<HighlightsFallback count={featured.length} />}>
+              <Highlights items={featured} />
+            </Suspense>
+          ) : (
+            <HighlightsFallback count={featured.length} />
+          )}
+        </div>
+      </section>
 
       <Places />
 
-      <section ref={near} className="wrap mt-[var(--sec-l)]" aria-labelledby="destaques">
-        <SectionLabel id="destaques" aside={`${featured.length} de ${projects.length}`}>
-          {home.highlightsLabel}
-        </SectionLabel>
-        {load ? (
-          <Suspense fallback={<HighlightsFallback count={featured.length} />}>
-            <Highlights items={featured} />
-          </Suspense>
-        ) : (
-          <HighlightsFallback count={featured.length} />
-        )}
-      </section>
+      <Services />
 
       <Closing />
     </>

@@ -2,7 +2,7 @@
 // Copy drafted and refined with the copywriting skill in the PRODUCT.md voice (CNT-002…CNT-018, DEC-030).
 
 export const contact = {
-  phone: '5548900000000', // CNT-010 — fictional placeholder, E.164 without "+"
+  phone: '5548999916638', // Coded by M's WhatsApp (DEC-033: the CTAs reach the author), E.164 without "+"
   email: 'contato@nordarch.example',
   instagram: '@nordarch.estudio',
   instagramUrl: 'https://www.instagram.com/',
@@ -11,45 +11,32 @@ export const contact = {
 
 export const hero = {
   labels: ['Santa Catarina', 'Arquitetura'] as const, // CNT-008
-  cue: 'Role', // CNT-015
+  cue: 'Role a página', // CNT-015 — "Role" alone read as a noun (DEC-033)
 }
 
 export const home = {
   manifesto: 'Primeiro o lugar. Depois o projeto.', // CNT-002 — refined with the copywriting skill (DEC-030)
   highlightsLabel: 'Destaques',
-  invitation: 'Tem um terreno e um programa em mente?',
   ctaButton: 'Conversar no WhatsApp',
   // "Sobre" section under the hero (DEC-028, DEC-030) — fictional studio facts (DEC-011)
   intro: {
-    label: 'Sobre',
     text: 'Somos um escritório de arquitetura em Florianópolis. Desenhamos casas, interiores, jardins e espaços comerciais em Santa Catarina.',
     text2: 'Quem faz o projeto acompanha a obra, da primeira visita ao terreno até a entrega das chaves.',
     link: 'Conheça o estúdio',
     image: 'steppe-house',
   },
-  // "Serviços" section (DEC-030)
+  // "Serviços" section (DEC-030); "Como trabalhamos" moved to the Estúdio page (DEC-033)
   services: {
-    label: 'Serviços',
-    title: 'Do primeiro estudo à última peça de marcenaria.',
+    title: 'Da implantação no terreno ao desenho da marcenaria.',
     items: [
       { title: 'Arquitetura', text: 'Casas e espaços comerciais, do estudo de implantação ao projeto executivo e às aprovações na prefeitura.', slug: 'pleat-house' },
       { title: 'Interiores', text: 'Layout, marcenaria, iluminação e materiais, em obra nova ou em reforma.', slug: 'celeiro-testo-alto' },
       { title: 'Paisagismo', text: 'Jardins com espécies nativas da região, desenhados junto com a arquitetura.', slug: 'mound-pavilion' },
       { title: 'Acompanhamento de obra', text: 'Visitas ao canteiro, conversa com fornecedores e decisões de detalhe até a entrega.', slug: 'casa-pedra-furada' },
     ],
-    stepsLabel: 'Como trabalhamos',
-    steps: [
-      { title: 'Conversa', text: 'Programa, prazo e orçamento.' },
-      { title: 'Visita', text: 'Vamos ao terreno ou ao imóvel.' },
-      { title: 'Estudo', text: 'Implantação, volumes e primeiras plantas.' },
-      { title: 'Projeto', text: 'Executivo, interiores e aprovações.' },
-      { title: 'Obra', text: 'Acompanhamento até a entrega.' },
-    ],
   },
-  // Black closing band (DEC-028): the WhatsApp message itself is the headline
-  // Black closing band (DEC-029): three real starting points, each with its own WhatsApp message
+  // Closing (DEC-029, DEC-033): three real starting points, each with its own WhatsApp message
   closing: {
-    label: 'Primeira conversa',
     title: 'Por onde começamos?',
     line: 'Escolha o ponto de partida e a mensagem abre pronta no WhatsApp. Na primeira conversa falamos do lugar, do programa e do prazo.',
     image: 'firn-house',
@@ -63,7 +50,6 @@ export const home = {
 
 // "Lugares" (DEC-025) — the twelve sites by region of Santa Catarina (fictional placements, DEC-012)
 export const places = {
-  label: 'Lugares',
   title: 'Doze lugares, do litoral à serra.',
   regions: [
     { name: 'Litoral', slugs: ['marram-house', 'casas-ferrugem', 'mound-pavilion', 'atelie-saco-dos-limoes'] },
@@ -80,27 +66,33 @@ export const cta = {
   },
   contact: {
     title: 'Marque a primeira conversa',
-    line: 'Diga a cidade, o tipo de projeto e uma referência que você goste. A mensagem abre com esse roteiro no WhatsApp.',
+    line: 'A mensagem abre pronta no WhatsApp. Conte a cidade, o tipo de projeto e uma referência de que você goste.',
   },
 }
 
 export const studio = {
-  manifesto: [
-    // CNT-003
-    'Começamos pelo terreno.',
-    'O projeto vem da luz, do vento e do que já estava lá.',
-    'Usamos poucos materiais e deixamos cada um aparente.',
-    'Acompanhamos a obra até a última peça de marcenaria.',
-  ],
+  // CNT-003 — rewritten as one paragraph (DEC-032): the four separate claims repeated the home and the Linguagem blocks
+  manifesto: 'Um estúdio pequeno em Florianópolis. As mesmas quatro pessoas desenham a casa, o interior e o jardim, e estão no canteiro até a entrega.',
+  manifestoImage: 'five-gables',
   language: [
     // CNT-006 — each block cites a project from the roster
     { title: 'Materiais', text: 'Madeira queimada, reboco claro, concreto e pinho. Poucos materiais por casa, sempre aparentes.', slug: 'casa-pedra-furada' },
     { title: 'Luz', text: 'As aberturas são pensadas para a luz baixa do sul. O sol de inverno entra, e o beiral segura o sol de verão.', slug: 'firn-house' },
     { title: 'Lugar', text: 'A implantação vem antes da planta. No Ferrugem, as duas casas desviam de uma pedra que já estava no terreno.', slug: 'casas-ferrugem' },
   ],
+  steps: {
+    title: 'Como trabalhamos',
+    items: [
+      { title: 'Conversa', text: 'Programa, prazo e orçamento.' },
+      { title: 'Visita', text: 'Vamos ao terreno ou ao imóvel.' },
+      { title: 'Estudo', text: 'Implantação, volumes e primeiras plantas.' },
+      { title: 'Projeto', text: 'Executivo, interiores e aprovações.' },
+      { title: 'Obra', text: 'Acompanhamento até a entrega.' },
+    ],
+  },
   scope: {
-    title: 'Do projeto à obra',
-    text: 'Arquitetura, interiores, paisagismo e acompanhamento de obra no mesmo estúdio. Quem desenha o projeto responde por ele no canteiro.',
+    title: 'Escopo por obra',
+    text: 'Nem toda casa pede tudo. Em cada obra, o que ficou com o estúdio.',
   },
   team: [
     // CNT-007 — fictional people; portraits = monogram placeholder (MED-T1 option B)

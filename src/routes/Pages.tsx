@@ -12,10 +12,10 @@ export function Contact() {
         <div className="col-span-4 sm:col-span-8 lg:col-span-5">
           <h1 className="t-h1">Contato</h1>
           <p className="t-body mt-6">{contactPage.intro}</p>
-          <address className="t-caption mt-[var(--sec-s)] flex flex-col gap-2 not-italic">
-            <a href={`mailto:${contact.email}`} className="link self-start">{contact.email}</a>
-            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="link self-start">{contact.instagram} ↗</a>
-            <span className="text-muted">{contact.city}</span>
+          <address className="t-caption mt-[var(--sec-s)] flex flex-col not-italic">
+            <a href={`mailto:${contact.email}`} className="link self-start py-3">{contact.email}</a>
+            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="link self-start py-3">{contact.instagram} ↗</a>
+            <span className="py-3 text-muted">{contact.city}</span>
           </address>
         </div>
         <div className="col-span-4 sm:col-span-8 lg:col-span-5 lg:col-start-7">

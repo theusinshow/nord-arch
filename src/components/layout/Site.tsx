@@ -48,6 +48,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       const land = () => {
         const to = () => (hash ? document.getElementById(hash)?.scrollIntoView() : window.scrollTo(0, 0))
         to()
+        document.getElementById('main')?.focus({ preventScroll: true }) // announce the new page (WCAG 2.4.3)
         if (hash) [80, 300].forEach((ms) => setTimeout(to, ms))
       }
       if (busy.current) return

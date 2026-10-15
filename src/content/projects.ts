@@ -169,6 +169,5 @@ export const openingOf = (p: Project) => p.images.find((i) => i.role === 'openin
 export const cardOf = (p: Project) => p.images.find((i) => i.role === 'card')!
 export const galleryOf = (p: Project) => p.images.filter((i) => i.role === 'gallery')
 export const categories: Category[] = ['Residencial', 'Interiores', 'Paisagismo', 'Comercial']
-export const driftTiles: Img[] = M.drift.map((d) => img(d, 'drift', ''))
 export const scopeLabel: Record<Scope, string> = { arquitetura: 'Arquitetura', interiores: 'Interiores', paisagismo: 'Paisagismo', obra: 'Obra' }
 export const caption = (p: Project) => `${p.place === p.city ? p.city : `${p.place}, ${p.city}`} · ${p.year}`

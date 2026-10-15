@@ -32,12 +32,13 @@ export default function Projects() {
       </div>
 
       <div className="mt-12 flex flex-wrap items-center justify-between gap-x-10 gap-y-4 border-t border-border pt-4">
-        <div role="tablist" aria-label="Categoria" className="flex flex-wrap gap-x-6 gap-y-2">
+        {/* toggle buttons, not tabs: they filter one list, there is no set of tab panels (DEC-033) */}
+        <div role="group" aria-label="Categoria" className="flex flex-wrap gap-x-6 gap-y-2">
           {[null, ...categories].map((c) => (
             <button
               key={c ?? 'todas'}
-              role="tab"
-              aria-selected={c === cat}
+              type="button"
+              aria-pressed={c === cat}
               className="t-label link min-h-11"
               onClick={() => set('categoria', c ? slugOf(c) : null)}
             >
@@ -45,9 +46,9 @@ export default function Projects() {
             </button>
           ))}
         </div>
-        <div className="flex gap-6" aria-label="Visualização">
+        <div role="group" className="flex gap-6" aria-label="Visualização">
           {(['lista', 'grade'] as const).map((v) => (
-            <button key={v} aria-pressed={view === v} className="t-label link min-h-11 capitalize" onClick={() => set('vista', v === 'lista' ? null : v)}>
+            <button key={v} type="button" aria-pressed={view === v} className="t-label link min-h-11 capitalize" onClick={() => set('vista', v === 'lista' ? null : v)}>
               {v}
             </button>
           ))}
@@ -119,12 +120,20 @@ function IndexList({ items }: { items: Project[] }) {
   )
 }
 
+// Masonry by hand: items are dealt round-robin into columns, so reading left to right follows NA—01, 02, 03…
+// (CSS columns fill top to bottom and broke the numbering, DEC-033)
 function Grade({ items }: { items: Project[] }) {
+  const lg = useMedia('(min-width: 1024px)')
+  const sm = useMedia('(min-width: 640px)')
+  const n = lg ? 3 : sm ? 2 : 1
+  const cols = Array.from({ length: n }, (_, c) => items.map((p, i) => ({ p, i })).filter(({ i }) => i % n === c))
   return (
-    <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
-      {items.map((p, i) => (
-        <div key={p.slug} className="mb-[var(--sec-s)] break-inside-avoid">
-          <ProjectCard project={p} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" ratio={i % 3 === 1 ? '4/5' : '3/2'} />
+    <div className="flex gap-6">
+      {cols.map((col, c) => (
+        <div key={c} className="flex min-w-0 flex-1 flex-col gap-[var(--sec-s)]">
+          {col.map(({ p, i }) => (
+            <ProjectCard key={p.slug} project={p} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" ratio={i % 3 === 1 ? '4/5' : '3/2'} />
+          ))}
         </div>
       ))}
     </div>

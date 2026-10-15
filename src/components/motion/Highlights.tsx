@@ -58,7 +58,7 @@ export default function Highlights({ items }: { items: Project[] }) {
         overlayColor="transparent"
         onOpen={(i, img) => openProject(items[i].slug, img)}
       />
-      <p className="mt-4 flex min-h-[1.5em] items-baseline justify-between gap-6" aria-live="polite">
+      <p className="mt-4 flex min-h-[1.5em] items-baseline justify-between gap-6">
         {p ? (
           <>
             <span className="t-h3">
@@ -68,7 +68,8 @@ export default function Highlights({ items }: { items: Project[] }) {
             <span className="t-caption text-muted">{caption(p)}</span>
           </>
         ) : (
-          <span className="t-label text-muted">{items.map((i) => i.code).join(' · ')}</span>
+          // at rest the strips are named, in order, so nothing has to be remembered from a hover (DEC-033)
+          <span className="t-caption max-w-none text-muted">{items.map((i) => i.name).join(' · ')}</span>
         )}
       </p>
     </div>

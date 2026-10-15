@@ -540,6 +540,66 @@ The roof-cut photo is kept. The `home` message variant was removed, and the Cont
 **Affects:** `components/reactbits/FlexCarousel.tsx`, `components/motion/Works.tsx`, `routes/Studio.tsx`, `package.json` (`ogl`).
 **Reversível:** sim
 
+## DEC-032 — Ink sections in rhythm, and a per-section anti-slop pass
+**Data:** 2026-10-15 · **Etapa:** refinamento (pedido do desenvolvedor: "tá tudo muito branco, o foco é branco mas não tudo"; tirar IA slop de cada section)
+
+**Decisão:** black (`#0B0B0C`) stops being "one CTA block per page" and becomes a second surface used in rhythm with the white wall. The developer chose **black and white only**: no grey or stone surface was added.
+
+- **Mechanism:** a `.ink` class flips the colour tokens (`--color-text` white, `--color-muted` #A2A5A9 ≈ 7.6:1, `--color-border` white 16%). Every component reads correctly inside it without a dark variant. Focus and selection now follow the tokens.
+- **Where:**
+  - Home: Serviços (ink) · Lugares (white) · Destaques → Por onde começamos → footer, one continuous ink ending.
+  - Estúdio: opening manifesto (ink) · Linguagem (white) · Escopo (ink) · Obras (white) · Equipe → footer (ink).
+  - Projeto: photos and ficha stay white; conversation → next project → footer close on ink.
+  - Footer: ink on every page. White pages keep a `--sec-l` pause before it (`main` padding; `.ink-end` removes it).
+- **Still white:** every place where a photo is the subject (hero edges, Intro, Lugares, Linguagem, galleries, index).
+- **Anti-slop pass:**
+  - removed the eyebrow labels stacked over headings (Sobre, Serviços, Lugares, Primeira conversa);
+  - Serviços: the four numbered columns (01–04) became inverting rows (service · what it is · the project that shows it, greyscale thumb). "Como trabalhamos" became a ficha; its numbers stay because order is the information;
+  - Estúdio: the four one-line manifesto claims became one paragraph; the image/text zig-zag became rows with varying photo sizes; the wall of NA-codes in Escopo became a schedule table (work × service, filled square marks);
+  - Projeto: the concept is set as a lead (`.t-lead`, 18–22 px) instead of small body text;
+  - copy: "última peça de marcenaria" and "quem projeta acompanha a obra" were each said 2–3 times; now once each.
+- **Kept:** no accent, radius 0, no shadows, no scrim, Michroma + Aktiv only, the 33.7° roof cut, black↔white inversion as the state.
+
+**Supersedes:** DEC-025 rule "one black block per page at most".
+**Affects:** `styles/index.css`, `content/site.ts`, `components/home/{Intro,Services,Places,Closing,CtaBand}.tsx`, `components/layout/Footer.tsx`, `components/motion/TeamCard.tsx`, `components/reactbits/AccordionGallery.tsx` (panel colour), `routes/{Home,Studio,Project}.tsx`, `DESIGN.md`.
+**Reversível:** sim
+
+## DEC-033 — Critique fixes (2026-10-15 run) and the portfolio route
+**Data:** 2026-10-15 · **Etapa:** refinamento (developer chose fixes after the Impeccable critique + audit: critique 22/32, audit 15/20; snapshot in `.impeccable/critique/`)
+
+**Decisão:** the site is presented in the developer's portfolio as a **case study** (video and screens, plus the making-of). The live site stays local: DEC-011, `noindex` and the publication gate are unchanged. The contact CTAs will point to Coded by M (pending the developer's real data).
+
+- **Hero:** the NORD row dips about 14% behind the roof instead of 28%. When the roof sits high (1440×900), the row scales down (≥ 0.7) instead of pinning under the header. Before, the tall volume hid the leg of the R and the word read "NOPD".
+- **Home order:** Hero · Sobre · Destaques (ink) · Lugares · Serviços (ink) · closing (now on white) · ink footer. The work comes second. "Como trabalhamos" moved to Estúdio, inside the Escopo ink section. On touch screens, Lugares rows carry their own thumbnail.
+- **WhatsApp:**
+  - On `/projetos/:slug`, every header and menu WhatsApp link carries the project's name and code.
+  - The menu entry is labelled "WhatsApp".
+  - The pre-filled messages are complete sentences, with no "___" blanks.
+- **Accessibility:**
+  - Menu: it was a dialog in name only; it is now a disclosure. While open, `main` and the footer are inert, focus moves to the first link, and Esc returns focus to the toggle.
+  - Navbar cells get a 2 px white / 2 px ink inset focus ring.
+  - Route changes focus `<main>`.
+  - Accordion panels are native links (no `role=listitem`, no `aria-current` on hover).
+  - The `/projetos` filters are `aria-pressed` toggles in a group, no longer an incomplete tablist.
+  - Linguagem items are h3. The scope table header reads "Projeto", and its "não" cells use sr-only text.
+  - Touch targets are 44 px in the footer, Sobre, Contato and the scope table.
+  - The Highlights live region is removed, and the strips are named at rest.
+- **Performance / CLS:**
+  - Shuffle labels are sized by the real text, so the scrambled glyphs no longer reflow the bar.
+  - Scroll progress is written to a CSS variable, with no React state.
+  - TiltedCard (`motion`) loads lazily, on fine pointers only.
+- **Consistency:**
+  - `.row-invert` works on white (→ ink) and on ink (→ white). The hairline sits on the `<li>`, so the 16 px hover bleed no longer extends it.
+  - The Grade is a round-robin masonry, so the reading order follows NA—01, 02, 03…
+  - `ScrollRestoration` is keyed by path.
+  - The project opening is 76 svh, so the code and name show above the fold.
+  - `.closing-title` has a 28 px minimum (reflow at 320 px).
+  - The `.link` underline is anchored to the text box.
+- **Cleanup:** removed DriftWall (and `driftTiles`), the unused `--ease-spring-back` token, `.on-photo`, and the content keys `places.label` and `home.invitation`. The hero cue is now "Role a página".
+
+**Affects:** `components/hero/Hero.tsx`, `components/layout/{Header,Shuffle,Site,Footer}.tsx`, `components/home/{Intro,Places,Services,Closing}.tsx`, `components/motion/{Highlights,TeamCard}.tsx`, `components/reactbits/AccordionGallery.tsx`, `routes/{Home,Projects,Project,Studio,Pages}.tsx`, `router.tsx`, `content/{site,projects}.ts`, `lib/whatsapp.ts`, `styles/index.css`, `DESIGN.md`, `public/favicon.svg` (square, ink tile, padded monogram).
+**Reversível:** sim
+
 ---
 
 ## Waivers

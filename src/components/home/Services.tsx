@@ -1,46 +1,45 @@
 import { ProjectLink } from '@/components/layout/Site'
-import { SectionLabel } from '@/components/ui/Parts'
-import { bySlug } from '@/content/projects'
+import { Picture } from '@/components/ui/Picture'
+import { bySlug, cardOf } from '@/content/projects'
 import { home } from '@/content/site'
 
 /**
- * "Serviços" (DEC-030): four services as columns divided by hairlines, each pointing to one
- * project that shows it, then "Como trabalhamos" as a five-step line. Static: text never animates.
+ * "Serviços" (DEC-030, DEC-032, DEC-033): an ink section. Each service is one row that names the work and the
+ * project that shows it; the whole row links there and inverts to white on hover/focus.
  */
 export function Services() {
   const s = home.services
   return (
-    <section id="servicos" className="wrap mt-[var(--sec-l)]" aria-labelledby="servicos-title">
-      <SectionLabel as="p" aside={`${s.items.length} frentes`}>{s.label}</SectionLabel>
-      <h2 id="servicos-title" className="t-h2 max-w-[22ch]">{s.title}</h2>
+    <section id="servicos" className="ink mt-[var(--sec-m)]" aria-labelledby="servicos-title">
+      <div className="wrap py-[var(--sec-m)]">
+        <h2 id="servicos-title" className="t-h2 max-w-[20ch]">{s.title}</h2>
 
-      <ol className="mt-[var(--sec-s)] grid grid-cols-1 border-t border-border sm:grid-cols-2 lg:grid-cols-4">
-        {s.items.map((it, i) => {
-          const p = bySlug(it.slug)!
-          return (
-            <li key={it.title} className="flex flex-col border-b border-border py-8 sm:px-6 sm:even:border-l lg:border-b-0 lg:border-l lg:first:border-l-0 lg:first:pl-0">
-              <span className="t-label text-muted">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="t-h3 mt-6">{it.title}</h3>
-              <p className="t-body mt-4 flex-1 text-[15px]">{it.text}</p>
-              <ProjectLink slug={p.slug} className="t-caption link mt-6 self-start text-muted hover:text-text">
-                Ver {p.name}
-              </ProjectLink>
-            </li>
-          )
-        })}
-      </ol>
-
-      <div className="mt-[var(--sec-m)]">
-        <p className="t-label text-muted">{s.stepsLabel}</p>
-        <ol className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-5 sm:gap-x-6">
-          {s.steps.map((st, i) => (
-            <li key={st.title} className="border-t border-text pt-4">
-              <span className="t-label text-muted">{i + 1}</span>
-              <p className="t-h3 mt-3">{st.title}</p>
-              <p className="t-caption mt-2 text-muted">{st.text}</p>
-            </li>
-          ))}
-        </ol>
+        <ul className="mt-[var(--sec-s)] border-t border-border">
+          {s.items.map((it) => {
+            const p = bySlug(it.slug)!
+            return (
+              <li key={it.title} className="border-b border-border">
+                <ProjectLink slug={p.slug} className="row-invert group grid-12 items-center gap-y-3 py-6 lg:py-7">
+                  <span className="t-service col-span-4 sm:col-span-8 lg:col-span-4">{it.title}</span>
+                  <span className="t-body col-span-4 text-muted sm:col-span-5 lg:col-span-5">{it.text}</span>
+                  <span className="col-span-4 flex items-center gap-4 sm:col-span-3 sm:justify-end lg:col-span-3">
+                    <span className="t-caption sm:text-right">
+                      <span className="font-medium">{p.name}</span>
+                      <span className="block text-muted">{p.code}</span>
+                    </span>
+                    <Picture
+                      img={cardOf(p)}
+                      sizes="96px"
+                      alt=""
+                      className="hidden shrink-0 sm:block"
+                      imgClassName="aspect-[3/2] w-24 object-cover grayscale transition-[filter] duration-[var(--dur-ui)] group-hover:grayscale-0 group-focus-visible:grayscale-0"
+                    />
+                  </span>
+                </ProjectLink>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )

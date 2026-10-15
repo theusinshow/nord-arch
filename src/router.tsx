@@ -11,11 +11,12 @@ function RootLayout() {
       <a href="#main" className="skip">Pular para o conteúdo</a>
       <Preloader />
       <Header />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />
-      <ScrollRestoration />
+      {/* keyed by path: a fresh load no longer inherits another page's scroll position (DEC-033) */}
+      <ScrollRestoration getKey={(l) => l.pathname} />
     </SiteProvider>
   )
 }
